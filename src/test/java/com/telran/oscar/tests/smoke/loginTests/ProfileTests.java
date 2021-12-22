@@ -28,6 +28,8 @@ public class ProfileTests extends TestBase {
         Assert.assertEquals(new ProfilePage(driver).getAlertText(), "Password updated");
     }
 
+    // ToDo добавить негативный - пароль и подтверждение пароля не равны
+
     @Test
     public void deleteAccountTest() {
         new ProfilePage(driver).clickDeleteProfileBtn().deleteProfile("Qwerty1234$");

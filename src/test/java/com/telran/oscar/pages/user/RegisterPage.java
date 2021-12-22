@@ -1,5 +1,6 @@
 package com.telran.oscar.pages.user;
 
+import com.telran.oscar.data.User;
 import com.telran.oscar.pages.HomePage;
 import com.telran.oscar.pages.PageBase;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +10,13 @@ import org.openqa.selenium.support.FindBy;
 public class RegisterPage extends PageBase {
     public RegisterPage(WebDriver driver) {
         super(driver);
+    }
+
+    @FindBy(id = "register_form")
+    WebElement registerForm;
+
+    public boolean isRegisterFormPresent() {
+        return registerForm.isDisplayed();
     }
 
     @FindBy(id = "id_registration-email")
@@ -30,4 +38,21 @@ public class RegisterPage extends PageBase {
         click(registerBtn);
         return new HomePage(driver);
     }
+
+    public HomePage createNewAccountUser(User user) {
+        type(registerEmail, user.getEmail());
+        type(registerPassword, user.getPassword());
+        type(confirmPassword, user.getPassword());
+        click(registerBtn);
+        return new HomePage(driver);
+    }
+
+    @FindBy(css = "span.error-block")
+    WebElement errorMsg;
+
+    public boolean isEmailAlreadyExistMsgPresent() {
+        return errorMsg.getText().equals("A user with that email address already exists");
+    }
+
+    //  //span[contains(.,'A user with that email address already exists')]
 }

@@ -37,13 +37,18 @@ public class HomePage extends PageBase {
         return new LoginPage(driver);
     }
 
-    public RegisterPage clickRegisterBtn(){
+    public RegisterPage clickRegisterBtn() {
         click(loginBtn);
         return new RegisterPage(driver);
     }
 
-    @FindBy(css = "ul.navbar-right li:first-child")
+    //    @FindBy(css = "ul.navbar-right li:first-child")
+    @FindBy(xpath = "//a[contains(.,'Account')]")
     WebElement accountBtn;
+
+    public boolean isAccountBtnPresent() {
+        return isElementPresent(By.xpath("//a[contains(.,'Account')]"));
+    }
 
     public ProfilePage clickAccountBtn() {
         click(accountBtn);

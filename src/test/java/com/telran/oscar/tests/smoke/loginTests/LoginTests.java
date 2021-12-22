@@ -1,7 +1,8 @@
 package com.telran.oscar.tests.smoke.loginTests;
 
+import com.telran.oscar.data.User;
+import com.telran.oscar.helpers.DataProviders;
 import com.telran.oscar.pages.HomePage;
-import com.telran.oscar.pages.product.ProductBookPage;
 import com.telran.oscar.pages.user.LoginPage;
 import com.telran.oscar.tests.TestBase;
 import org.testng.Assert;
@@ -17,11 +18,24 @@ public class LoginTests extends TestBase {
 
     @Test
     public void loginUserPositiveTest() {
-        new LoginPage(driver).logIn("nm123@mail.com","Qwerty123$");
-        Assert.assertEquals(new HomePage(driver).getAlertText(),"Welcome back");
-        Assert.assertEquals(new HomePage(driver).clickAccountBtn().getAccountEmail(),"nm123@mail.com");
+        new LoginPage(driver).logIn("nm123@mail.com", "Qwerty123$");
+        Assert.assertEquals(new HomePage(driver).getAlertText(), "Welcome back");
+        Assert.assertEquals(new HomePage(driver).clickAccountBtn().getAccountEmail(), "nm123@mail.com");
     }
 
-    // ToDo 1. добавить Dataprovider
+    @Test
+    public void loginUserWrongEmailNegativeTest() {
+        new LoginPage(driver).logIn("nm777@mail.com", "Qwerty123$");
+        Assert.assertTrue(new LoginPage(driver).isErrorAlertPresent());
+    }
+
+    @Test
+    public void loginUserWrongPasswordNegativeTest() {
+        new LoginPage(driver).logIn("nm123@mail.com", "12345");
+        Assert.assertTrue(new LoginPage(driver).isErrorAlertPresent());
+    }
+
+    // ToDo добавить негативные - с незаполненными емейлом и паролем
+
 }
 

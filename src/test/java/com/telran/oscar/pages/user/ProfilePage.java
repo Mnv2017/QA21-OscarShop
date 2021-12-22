@@ -1,6 +1,7 @@
 package com.telran.oscar.pages.user;
 
 import com.telran.oscar.pages.PageBase;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,6 +10,10 @@ public class ProfilePage extends PageBase {
 
     public ProfilePage(WebDriver driver) {
         super(driver);
+    }
+
+    public boolean isItProfilePage() {
+        return isElementPresent(By.xpath("//h1[text()='Profile']"));
     }
 
     @FindBy(xpath = "//tbody/tr[2]/td")
@@ -21,7 +26,7 @@ public class ProfilePage extends PageBase {
     @FindBy(xpath = "//tbody/tr[1]/td")
     WebElement accountName;
 
-    public String getAccountName(){
+    public String getAccountName() {
         return accountName.getText();
     }
 
