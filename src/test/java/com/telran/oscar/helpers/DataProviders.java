@@ -14,7 +14,7 @@ import java.util.List;
 public class DataProviders {
 
     @DataProvider
-    public Iterator<Object[]> newUserWrongEmailFromCSV() throws IOException {
+    public static Iterator<Object[]> newUserWrongEmailFromCSV() throws IOException {
         List<Object[]> list = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/newUsersWrongEmail.csv")));
         String line = reader.readLine();
@@ -27,7 +27,7 @@ public class DataProviders {
     }
 
     @DataProvider
-    public Iterator<Object[]> newUserWrongPasswordFromCSV() throws IOException {
+    public static Iterator<Object[]> newUserWrongPasswordFromCSV() throws IOException {
         List<Object[]> list = new ArrayList<>();
         BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/newUsersWrongPassword.csv")));
         String line = reader.readLine();

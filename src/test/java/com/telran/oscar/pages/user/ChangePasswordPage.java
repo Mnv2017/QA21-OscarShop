@@ -1,6 +1,7 @@
 package com.telran.oscar.pages.user;
 
 import com.telran.oscar.pages.PageBase;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,11 +23,25 @@ public class ChangePasswordPage extends PageBase {
     @FindBy(xpath = "//button[contains(text(),'Save')]")
     WebElement saveBtn;
 
-    public void changePassword(String oldPass, String newPass) {
+    public ProfilePage changePassword(String oldPass, String newPass, String confirm) {
         type(oldPassword, oldPass);
         type(newPassword1, newPass);
-        type(newPassword2, newPass);
+        type(newPassword2, confirm);
         click(saveBtn);
+        return new ProfilePage(driver);
     }
 
+    @FindBy(css = ".alert.alert-danger")
+    WebElement wrongDataAlert;
+
+    public boolean isErrorAlertPresent() {
+        return isElementPresent(By.cssSelector(".alert.alert-danger"));
+    }
+
+    @FindBy(css ="span.error-block" )
+    WebElement errMessage;
+
+    public String getErrMessageText(){
+        return errMessage.getText();
+    }
 }

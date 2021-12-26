@@ -12,7 +12,7 @@ public class ProfilePage extends PageBase {
         super(driver);
     }
 
-    public boolean isItProfilePage() {
+    public boolean isProfilePagePresent() {
         return isElementPresent(By.xpath("//h1[text()='Profile']"));
     }
 
