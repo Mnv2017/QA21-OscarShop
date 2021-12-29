@@ -3,6 +3,7 @@ package com.telran.oscar.tests.homeTests;
 import com.telran.oscar.pages.basket.BasketPage;
 import com.telran.oscar.pages.home.BrowseStoreMenuPage;
 import com.telran.oscar.pages.home.HeaderPage;
+import com.telran.oscar.pages.home.HomePage;
 import com.telran.oscar.pages.home.SearchPage;
 import com.telran.oscar.pages.product.AllProductsPage;
 import com.telran.oscar.pages.product.BooksPage;
@@ -19,6 +20,13 @@ public class HomePageGuestTests extends TestBase {
     @BeforeClass
     public void ensurePreconditions(){
         new HeaderPage(driver).clickLogOut();
+    }
+
+    @Test
+    public void homePageHeadersTest(){
+        Assert.assertEquals(new HomePage(driver).getSection1Header(),"Welcome!");
+        Assert.assertEquals(new HomePage(driver).getSection2Header(),"Recommended reading");
+        Assert.assertEquals(new HomePage(driver).getSection3Header(),"Other good books");
     }
 
     @Test

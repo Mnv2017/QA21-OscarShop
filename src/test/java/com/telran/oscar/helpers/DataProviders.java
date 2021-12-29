@@ -20,7 +20,7 @@ public class DataProviders {
         String line = reader.readLine();
         while (line != null) {
             String[] split = line.split(",");
-            list.add(new Object[]{new User().setEmail(split[0]).setPassword(split[1])});
+            list.add(new Object[]{new User().setEmail(split[0]).setPassword(split[1]).setPassword2(split[1])});
             line = reader.readLine();
         }
         return list.iterator();
@@ -33,7 +33,7 @@ public class DataProviders {
         String line = reader.readLine();
         while (line != null) {
             String[] split = line.split(",");
-            list.add(new Object[]{new User().setEmail(split[0]).setPassword(split[1])});
+            list.add(new Object[]{new User().setEmail(split[0]).setPassword(split[1]).setPassword2(split[1])});
             line = reader.readLine();
         }
         return list.iterator();

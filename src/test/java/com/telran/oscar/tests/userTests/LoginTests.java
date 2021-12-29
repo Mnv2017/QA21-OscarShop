@@ -6,14 +6,20 @@ import com.telran.oscar.pages.home.HomePage;
 import com.telran.oscar.pages.user.LoginPage;
 import com.telran.oscar.tests.TestBase;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class LoginTests extends TestBase {
 
-    @BeforeMethod
+    @BeforeMethod(enabled = true)
     public void ensurePreconditions() {
-        new HeaderPage(driver).clickLogOut().clickLoginBtn();
+        try {
+            new HeaderPage(driver).clickLogOut().clickLoginBtn();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Test(priority = 1)
@@ -36,15 +42,20 @@ public class LoginTests extends TestBase {
     }
 
     @Test(priority = 4)
-    public void loginUserWithEmptyEmailNegativeTest(){
-        new  LoginPage(driver).logInUser(new User().setPassword("Qwerty123$"));
+    public void loginUserWithEmptyEmailNegativeTest() {
+        new LoginPage(driver).logInUser(new User().setPassword("Qwerty123$"));
         Assert.assertTrue(new LoginPage(driver).isLoginFormPresent());
     }
 
     @Test(priority = 5)
-    public void loginUserWithEmptyPasswordNegativeTest(){
-        new  LoginPage(driver).logInUser(new User().setEmail("nm123@mail.com"));
+    public void loginUserWithEmptyPasswordNegativeTest() {
+        new LoginPage(driver).logInUser(new User().setEmail("nm123@mail.com"));
         Assert.assertTrue(new LoginPage(driver).isLoginFormPresent());
+    }
+
+    @AfterClass(enabled = false)
+    public void logOut() {
+        new HeaderPage(driver).clickLogOut();
     }
 }
 

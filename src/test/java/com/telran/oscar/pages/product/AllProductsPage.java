@@ -23,4 +23,12 @@ public class AllProductsPage extends PageBase {
         click(home);
         return new BrowseStoreMenuPage(driver);
     }
+
+    @FindBy(css = ".product_pod a")
+    WebElement firstBookInList;
+
+    public ProductBookPage clickOnFirstBookInList(){
+        click(firstBookInList);
+        return new ProductBookPage(driver);
+    }
 }

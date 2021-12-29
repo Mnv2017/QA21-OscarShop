@@ -1,16 +1,29 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="LoginUser" verbose="1" >
-
-    <test name="Regression">
+<suite name="RegressionUserTests" verbose="1">
+    <test name="LoginUser">
         <classes>
+            <class name="com.telran.oscar.tests.userTests.ProfileTests"/>
             <class name="com.telran.oscar.tests.userTests.LoginTests"/>
-<!--            <class name="com.telran.oscar.tests.userTests.ProfileTests"/>-->
-<!--            <class name="com.telran.oscar.tests.userTests.RegistrationTests">-->
-<!--            <methods>-->
-<!--                <include name=".*Positive.*" />-->
-<!--            </methods>-->
-<!--            </class>-->
+            <class name="com.telran.oscar.tests.userTests.RegistrationTests">
+                <methods>
+                    <exclude name=".*NewUserWrongPassword.*"/>
+                    <exclude name=".*NewUserWrongEmail.*"/>
+                </methods>
+            </class>
         </classes>
     </test>
+
+
+    <!--    <test name="RegistrationUser">-->
+    <!--        <classes>-->
+    <!--            <class name="com.telran.oscar.tests.userTests.RegistrationTests">-->
+    <!--                <methods>-->
+    <!--                    <exclude name=".*NewUserWrongPassword.*" />-->
+    <!--                    <exclude name=".*NewUserWrongEmail.*" />-->
+    <!--                </methods>-->
+    <!--            </class>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+
 </suite>

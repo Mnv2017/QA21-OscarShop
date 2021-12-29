@@ -77,7 +77,7 @@ public class HeaderPage extends PageBase {
     WebElement logo;
 
     public HomePage clickOnLogo() {
-        click(logo);
+        clickWithAction(logo);
         return new HomePage(driver);
     }
 
