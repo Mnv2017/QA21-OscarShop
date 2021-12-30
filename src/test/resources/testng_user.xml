@@ -13,17 +13,4 @@
             </class>
         </classes>
     </test>
-
-
-    <!--    <test name="RegistrationUser">-->
-    <!--        <classes>-->
-    <!--            <class name="com.telran.oscar.tests.userTests.RegistrationTests">-->
-    <!--                <methods>-->
-    <!--                    <exclude name=".*NewUserWrongPassword.*" />-->
-    <!--                    <exclude name=".*NewUserWrongEmail.*" />-->
-    <!--                </methods>-->
-    <!--            </class>-->
-    <!--        </classes>-->
-    <!--    </test>-->
-
 </suite>

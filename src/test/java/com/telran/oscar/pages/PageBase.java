@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class PageBase {
     // добавить неявные ожидание и screenshot
@@ -26,6 +27,11 @@ public class PageBase {
             element.clear();
             element.sendKeys(text);
         }
+    }
+
+    public void typeSelect(WebElement element, String text){
+        Select select = new Select(element);
+        select.selectByVisibleText(text);
     }
 
     public void clickWithAction(WebElement element) {

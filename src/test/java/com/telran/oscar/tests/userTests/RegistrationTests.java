@@ -103,4 +103,5 @@ public class RegistrationTests extends TestBase {
         }
     }
 
+    //ToDo написать смоук-тест регистрация - выход - логин
 }

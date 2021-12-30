@@ -40,7 +40,7 @@ public class TestBase {
         driver.manage().window().maximize();
 //        driver.manage().window().setSize(new Dimension(1800,900));
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://selenium1py.pythonanywhere.com/en-gb");
+        driver.get("https://selenium1py.pythonanywhere.com");
 //        driver.get(baseURL); // если используем файл с Properties
         driver.register(new MyListener());
 
@@ -63,7 +63,7 @@ public class TestBase {
         }
     }
 
-    @AfterSuite
+    @AfterSuite(enabled = true)
     public void tearDown() {
         driver.quit();
     }

@@ -14,7 +14,7 @@ public class AccountSidebarPage extends PageBase {
     @FindBy(xpath = "//a[text()='Profile']")
     WebElement profile;
 
-    public ProfilePage getProfilePage(){
+    public ProfilePage getProfilePage() {
         click(profile);
         return new ProfilePage(driver);
     }
@@ -22,7 +22,10 @@ public class AccountSidebarPage extends PageBase {
     @FindBy(xpath = "//a[text()='Order History']")
     WebElement orderHistory;
 
-
+    public OrderHistoryPage clickOrderHistory() {
+        click(orderHistory);
+        return new OrderHistoryPage(driver);
+    }
 
     @FindBy(xpath = "//a[text()='Address Book']")
     WebElement addressBook;

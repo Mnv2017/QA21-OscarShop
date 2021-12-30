@@ -55,12 +55,4 @@ public class HomePage extends PageBase {
         return new ProductBookPage(driver);
     }
 
-    @FindBy(css = ".dropdown-submenu")
-    WebElement booksMenuItem2;
-
-    public HeaderPage getBooksPage() {
-        click(booksMenuItem2);
-        return new HeaderPage(driver);
-    }
-
 }

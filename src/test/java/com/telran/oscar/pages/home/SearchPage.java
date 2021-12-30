@@ -12,22 +12,18 @@ public class SearchPage extends PageBase {
         super(driver);
     }
 
-//    @FindBy(css = "a[title='Hacking Work']")
-//    WebElement hackingWork; // ссылка на книгу
-
     @FindBy(xpath = "//div[@id='messages']//a[text()='View basket']")
     WebElement viewBasketBtn;
 
-    public ProductBookPage openSelectedBook(String name) {
+    public ProductBookPage clickOnSelectedBook(String name) {
         WebElement selectedBook = driver.findElement(By.cssSelector("a[title='" + name + "']"));
         click(selectedBook);
         return new ProductBookPage(driver);
     }
 
-    public boolean isSearchResultPresent(String text){
-        String h1 = "//h1[contains(.,'"+text+"')]";
+    public boolean isSearchResultPresent(String text) {
+        String h1 = "//h1[contains(.,'" + text + "')]";
         return isElementPresent(By.xpath(h1));
-//        return isElementPresent(By.xpath("//h1[contains(.,'Products matching')]"));
     }
 
 }

@@ -4,6 +4,7 @@ public class User {
     private String email;
     private String password;
     private String password2;
+    // ToDo добавить тестового пользователя и пользователя для регистрации
 
     public String getEmail() {
         return email;

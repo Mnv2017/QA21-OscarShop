@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="RegressionHomeTests" verbose="1">
+    <test name="HomePage">
+        <classes>
+            <class name="com.telran.oscar.tests.basketTests.buyTwoBooksPositiveTest"/>
+        </classes>
+    </test>
+</suite>

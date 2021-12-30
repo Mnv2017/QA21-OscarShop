@@ -14,10 +14,9 @@ import org.testng.annotations.Test;
 public class ProfileTests extends TestBase {
 
     @BeforeClass
-    public void ensurePreconditions() { // создаем аккаунт и заходим в него
+    public void ensurePreconditions() {
         new HeaderPage(driver).clickLogOut().clickRegisterBtn()
                 .createNewAccount("nm456@mail.com", "Qwerty123$").clickAccountBtn();
-// ToDo записать в тетрадь опцию для вывода исключений в testng.xml
     }
 
     @Test(priority = 1)
@@ -41,7 +40,7 @@ public class ProfileTests extends TestBase {
     }
 
     @Test(priority = 4)
-    public void deleteAccountTest() { // ToDo поменять пароль обратно!!
+    public void deleteAccountTest() {
         new AccountSidebarPage(driver).getProfilePage().clickDeleteProfileBtn().deleteProfile("Qwerty1234$");
         Assert.assertEquals(new HomePage(driver)
                 .getAlertText(), "Your profile has now been deleted. Thanks for using the site.");

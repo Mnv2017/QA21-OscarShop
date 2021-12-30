@@ -27,9 +27,10 @@ public class HeaderPage extends PageBase {
                 && isElementPresent(By.cssSelector("#language_selector button"));
     }
 
-    public HeaderPage setLanguage(String languge) {
-        Select select = new Select(languageList);
-        select.selectByVisibleText(languge);
+    public HeaderPage setLanguage(String language) {
+//        Select select = new Select(languageList);
+//        select.selectByVisibleText(language);
+        typeSelect(languageList,language);
         click(goBtn);
         return this;
     }
@@ -87,6 +88,13 @@ public class HeaderPage extends PageBase {
     public BasketPage clickViewBasket() {
         click(viewBasket);
         return new BasketPage(driver);
+    }
+
+    @FindBy(css = ".basket-mini.pull-right.hidden-xs")
+    WebElement basketSum;
+
+    public String getBasketSum(){
+        return basketSum.getText();
     }
 
     @FindBy(id = "id_q")

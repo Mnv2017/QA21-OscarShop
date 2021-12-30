@@ -27,8 +27,12 @@ public class AllProductsPage extends PageBase {
     @FindBy(css = ".product_pod a")
     WebElement firstBookInList;
 
-    public ProductBookPage clickOnFirstBookInList(){
-        click(firstBookInList);
+    @FindBy(xpath = "//ol[@class='row']//li[2]")
+    WebElement book2;
+
+    public ProductBookPage clickOnNBookInList(int n) {
+        String bookN = "//ol[@class='row']//li[" + n + "]";
+        driver.findElement(By.xpath(bookN)).click();
         return new ProductBookPage(driver);
     }
 }
