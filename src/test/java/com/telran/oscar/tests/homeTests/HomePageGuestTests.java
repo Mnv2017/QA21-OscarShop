@@ -5,9 +5,7 @@ import com.telran.oscar.pages.home.BrowseStoreMenuPage;
 import com.telran.oscar.pages.home.HeaderPage;
 import com.telran.oscar.pages.home.HomePage;
 import com.telran.oscar.pages.home.SearchPage;
-import com.telran.oscar.pages.product.AllProductsPage;
-import com.telran.oscar.pages.product.BooksPage;
-import com.telran.oscar.pages.product.ClothingPage;
+import com.telran.oscar.pages.product.NavigateMenuPage;
 import com.telran.oscar.pages.user.LoginPage;
 import com.telran.oscar.pages.user.RegisterPage;
 import com.telran.oscar.tests.TestBase;
@@ -57,15 +55,15 @@ public class HomePageGuestTests extends TestBase {
         new HeaderPage(driver).clickViewBasket();
         Assert.assertTrue(new BasketPage(driver).isBasketPagePresent());
     }
-
+// TODO перенести BrowseStoreMenu в продукты?
     @Test
     public void browseStoreMenuTest(){
         Assert.assertTrue(new BrowseStoreMenuPage(driver).clickOnAllProductsItem().isAllProductsPagePresent());
-        new AllProductsPage(driver).returnToHomePage();
+        new NavigateMenuPage(driver).returnToHomePage();
         Assert.assertTrue(new BrowseStoreMenuPage(driver).clickOnBooksItem().isBooksPagePresent());
-        new BooksPage(driver).returnToHomePage();
+        new NavigateMenuPage(driver).returnToHomePage();
         Assert.assertTrue(new BrowseStoreMenuPage(driver).clickOnClothingItem().isClothingPagePresent());
-        new ClothingPage(driver).returnToHomePage();
+        new NavigateMenuPage(driver).returnToHomePage();
         Assert.assertTrue(new BrowseStoreMenuPage(driver).clickOnOffersItem().isOffersPagePresent());
     }
 }

@@ -6,20 +6,19 @@ import com.telran.oscar.pages.home.BrowseStoreMenuPage;
 import com.telran.oscar.pages.home.HeaderPage;
 import com.telran.oscar.pages.home.HomePage;
 import com.telran.oscar.pages.home.SearchPage;
-import com.telran.oscar.pages.product.AllProductsPage;
-import com.telran.oscar.pages.product.BooksPage;
-import com.telran.oscar.pages.product.ClothingPage;
+import com.telran.oscar.pages.product.NavigateMenuPage;
 import com.telran.oscar.pages.user.ProfilePage;
 import com.telran.oscar.tests.TestBase;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 public class HomePageLoggedUserTests extends TestBase {
 
     @BeforeClass
     public void ensurePreconditions() {
         new HeaderPage(driver).clickLoginBtn().logInUser(new User()
-                .setEmail("nm123@mail.com").setPassword("Qwerty123$"));
+                .setEmail(User.LOG_EMAIL).setPassword(User.LOG_PASSWORD));
     }
 
     @Test(priority = 1)
@@ -33,15 +32,15 @@ public class HomePageLoggedUserTests extends TestBase {
         new BrowseStoreMenuPage(driver).clickOnAllProductsItem();
         Assert.assertTrue(new HeaderPage(driver).clickOnLogo().isHomePagePresent());
     }
-
+    // TODO перенести BrowseStoreMenu в продукты?
     @Test(priority = 2)
     public void browseStoreMenuTest() {
         Assert.assertTrue(new BrowseStoreMenuPage(driver).clickOnAllProductsItem().isAllProductsPagePresent());
-        new AllProductsPage(driver).returnToHomePage();
+        new NavigateMenuPage(driver).returnToHomePage();
         Assert.assertTrue(new BrowseStoreMenuPage(driver).clickOnBooksItem().isBooksPagePresent());
-        new BooksPage(driver).returnToHomePage();
+        new NavigateMenuPage(driver).returnToHomePage();
         Assert.assertTrue(new BrowseStoreMenuPage(driver).clickOnClothingItem().isClothingPagePresent());
-        new ClothingPage(driver).returnToHomePage();
+        new NavigateMenuPage(driver).returnToHomePage();
         Assert.assertTrue(new BrowseStoreMenuPage(driver).clickOnOffersItem().isOffersPagePresent());
     }
 

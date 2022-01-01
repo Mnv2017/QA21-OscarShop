@@ -2,6 +2,7 @@ package com.telran.oscar.pages.home;
 
 import com.telran.oscar.pages.PageBase;
 import com.telran.oscar.pages.basket.BasketPage;
+import com.telran.oscar.pages.product.NavigateMenuPage;
 import com.telran.oscar.pages.user.LoginPage;
 import com.telran.oscar.pages.user.ProfilePage;
 import com.telran.oscar.pages.user.RegisterPage;
@@ -28,9 +29,7 @@ public class HeaderPage extends PageBase {
     }
 
     public HeaderPage setLanguage(String language) {
-//        Select select = new Select(languageList);
-//        select.selectByVisibleText(language);
-        typeSelect(languageList,language);
+        typeSelect(languageList, language);
         click(goBtn);
         return this;
     }
@@ -62,6 +61,12 @@ public class HeaderPage extends PageBase {
         return this;
     }
 
+    public boolean isAccountBtnPresent() {
+        return isElementPresent(By.xpath("//a[contains(.,'Account')]"));
+    }
+
+    // ToDo переделать isElementPresent?
+
     @FindBy(xpath = "//a[contains(.,'Account')]")
     WebElement accountBtn;
 
@@ -70,15 +75,12 @@ public class HeaderPage extends PageBase {
         return new ProfilePage(driver);
     }
 
-    public boolean isAccountBtnPresent() {
-        return isElementPresent(By.xpath("//a[contains(.,'Account')]"));
-    }
 
     @FindBy(xpath = "//a[text()='Oscar']")
     WebElement logo;
 
     public HomePage clickOnLogo() {
-        clickWithAction(logo);
+        click(logo);
         return new HomePage(driver);
     }
 
@@ -93,7 +95,7 @@ public class HeaderPage extends PageBase {
     @FindBy(css = ".basket-mini.pull-right.hidden-xs")
     WebElement basketSum;
 
-    public String getBasketSum(){
+    public String getBasketSum() {
         return basketSum.getText();
     }
 
@@ -107,5 +109,14 @@ public class HeaderPage extends PageBase {
         type(search, name);
         click(searchBtn);
         return new SearchPage(driver);
+    }
+
+    public BrowseStoreMenuPage deleteAllProductsFromBasket() {
+        if (new HeaderPage(driver).getBasketSum().contains("£0.00")) {
+            return new BrowseStoreMenuPage(driver);
+        } else {
+            new HeaderPage(driver).clickViewBasket().emptyBasket();
+            return new NavigateMenuPage(driver).returnToHomePage();
+        }
     }
 }

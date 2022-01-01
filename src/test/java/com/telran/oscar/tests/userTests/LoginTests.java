@@ -7,53 +7,48 @@ import com.telran.oscar.pages.user.LoginPage;
 import com.telran.oscar.tests.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class LoginTests extends TestBase {
 
-    @BeforeMethod(enabled = true)
+    @BeforeMethod
     public void ensurePreconditions() {
-        try {
-            new HeaderPage(driver).clickLogOut().clickLoginBtn();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        new HeaderPage(driver).clickLogOut().clickLoginBtn();
     }
 
     @Test(priority = 1)
     public void loginUserPositiveTest() {
-        new LoginPage(driver).logIn("nm123@mail.com", "Qwerty123$");
+        new LoginPage(driver).logInUser(new User().setEmail(User.LOG_EMAIL).setPassword(User.LOG_PASSWORD));
         Assert.assertEquals(new HomePage(driver).getAlertText(), "Welcome back");
-        Assert.assertEquals(new HeaderPage(driver).clickAccountBtn().getAccountEmail(), "nm123@mail.com");
+        Assert.assertEquals(new HeaderPage(driver).clickAccountBtn().getAccountEmail(), User.LOG_EMAIL);
     }
 
     @Test(priority = 2)
     public void loginUserWrongEmailNegativeTest() {
-        new LoginPage(driver).logIn("nm777@mail.com", "Qwerty123$");
+        new LoginPage(driver).logInUser(new User().setEmail("nm777@mail.com").setPassword(User.LOG_PASSWORD));
         Assert.assertTrue(new LoginPage(driver).isErrorAlertPresent());
     }
 
     @Test(priority = 3)
     public void loginUserWrongPasswordNegativeTest() {
-        new LoginPage(driver).logIn("nm123@mail.com", "12345");
+        new LoginPage(driver).logInUser(new User().setEmail(User.LOG_EMAIL).setPassword("12345"));
         Assert.assertTrue(new LoginPage(driver).isErrorAlertPresent());
     }
 
     @Test(priority = 4)
     public void loginUserWithEmptyEmailNegativeTest() {
-        new LoginPage(driver).logInUser(new User().setPassword("Qwerty123$"));
+        new LoginPage(driver).logInUser(new User().setPassword(User.LOG_PASSWORD));
         Assert.assertTrue(new LoginPage(driver).isLoginFormPresent());
     }
 
     @Test(priority = 5)
     public void loginUserWithEmptyPasswordNegativeTest() {
-        new LoginPage(driver).logInUser(new User().setEmail("nm123@mail.com"));
+        new LoginPage(driver).logInUser(new User().setEmail(User.LOG_EMAIL));
         Assert.assertTrue(new LoginPage(driver).isLoginFormPresent());
     }
 
-    @AfterClass(enabled = false)
+    @AfterClass
     public void logOut() {
         new HeaderPage(driver).clickLogOut();
     }

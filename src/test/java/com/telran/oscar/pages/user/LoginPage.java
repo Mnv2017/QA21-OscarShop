@@ -25,13 +25,6 @@ public class LoginPage extends PageBase {
     @FindBy(css = "button[name=login_submit]")
     WebElement logInBtn;
 
-    public LoginPage logIn(String email, String password) {
-        type(loginEmail, email);
-        type(loginPassword, password);
-        click(logInBtn);
-        return new LoginPage(driver);
-    }
-
     public LoginPage logInUser(User user) {
         type(loginEmail, user.getEmail());
         type(loginPassword, user.getPassword());
@@ -39,16 +32,8 @@ public class LoginPage extends PageBase {
         return new LoginPage(driver);
     }
 
-    @FindBy(css = ".alert.alert-danger")
-    WebElement wrongDataAlert;
-
     public boolean isErrorAlertPresent() {
-        return wrongDataAlert.isDisplayed();
+        return isElementPresent(By.cssSelector(".alert.alert-danger"));
     }
-
-
-
-
-    // #login_form .alert - локатор для 2х алертов при неправильном логине
 
 }

@@ -75,14 +75,19 @@ public class ShippingPage extends PageBase {
         return new PaymentPage(driver);
     }
 
-    // ToDo добавить проверку - есть кнопка или заполнять форму
-
     @FindBy(css = ".btn.btn-primary.btn-large.ship-address")
     WebElement shipToAddress;
 
-    public PaymentPage clickShipToThisAddress(){
+    public PaymentPage clickShipToThisAddress() {
         click(shipToAddress);
         return new PaymentPage(driver);
+    }
+
+    public PaymentPage specifyShippingAddress() {
+        if (shipToAddress.isDisplayed()) {
+            return clickShipToThisAddress();
+        } else
+            return fillShippingAddressForm();
     }
 
 }

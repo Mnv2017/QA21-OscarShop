@@ -29,6 +29,12 @@ task testHome(type:Test) {
     }
 }
 
+task testBasket(type:Test) {
+    useTestNG(){
+        suites 'src/test/resources/testng_basket.xml'
+    }
+}
+
 task testSmoke1(type:Test) {
     useTestNG(){
         suites 'src/test/resources/testng_smoke1.xml'

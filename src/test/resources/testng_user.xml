@@ -1,7 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="RegressionUserTests" verbose="1">
-    <test name="LoginUser">
+    <test name="UserTest">
         <classes>
             <class name="com.telran.oscar.tests.userTests.ProfileTests"/>
             <class name="com.telran.oscar.tests.userTests.LoginTests"/>

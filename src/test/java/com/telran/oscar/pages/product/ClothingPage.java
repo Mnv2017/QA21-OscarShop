@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import javax.annotation.meta.Exclusive;
+
 public class ClothingPage extends PageBase {
     public ClothingPage(WebDriver driver) {
         super(driver);
@@ -16,11 +18,37 @@ public class ClothingPage extends PageBase {
         return isElementPresent(By.xpath("//h1[contains(.,'Clothing')]"));
     }
 
-    @FindBy(css = ".breadcrumb a")
-    WebElement home;
+    @FindBy(xpath = "//ol[@class='row']//li[1]")
+    WebElement firsClothing;
 
-    public BrowseStoreMenuPage returnToHomePage() {
-        click(home);
-        return new BrowseStoreMenuPage(driver);
+    public ClothingPage clickOnFirstClothingInList() {
+        click(firsClothing);
+        return this;
+    }
+
+    @FindBy(xpath = "//a[contains(.,'Django T-shirt')]")
+    WebElement firstVariant;
+
+    @FindBy(id = "add_to_basket_form")
+    WebElement addToBasketBtn;
+
+    public ClothingPage addClothingToBasket() {
+        click(firstVariant);
+        click(addToBasketBtn);
+        return this;
+    }
+
+    @FindBy(css = "h1")
+    WebElement name;
+
+    public String getClothingName() {
+        return name.getText();
+    }
+
+    @FindBy(css = "div.row p.price_color")
+    WebElement price;
+
+    public String getClothingPrice() {
+        return price.getText();
     }
 }

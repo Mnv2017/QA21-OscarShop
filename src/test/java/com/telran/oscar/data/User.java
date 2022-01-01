@@ -4,7 +4,14 @@ public class User {
     private String email;
     private String password;
     private String password2;
-    // ToDo добавить тестового пользователя и пользователя для регистрации
+
+    // ToDo подключить lombok?
+
+    public static final String LOG_EMAIL = "nm123@mail.com";
+    public static final String LOG_PASSWORD = "Qwerty123$";
+
+    public static final String REG_EMAIL = "nm456@mail.com";
+    public static final String REG_PASSWORD = "Qwerty123$";
 
     public String getEmail() {
         return email;

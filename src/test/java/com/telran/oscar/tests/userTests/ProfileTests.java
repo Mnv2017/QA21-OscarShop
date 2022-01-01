@@ -1,5 +1,6 @@
 package com.telran.oscar.tests.userTests;
 
+import com.telran.oscar.data.User;
 import com.telran.oscar.pages.home.HeaderPage;
 import com.telran.oscar.pages.home.HomePage;
 import com.telran.oscar.pages.user.AccountSidebarPage;
@@ -16,7 +17,8 @@ public class ProfileTests extends TestBase {
     @BeforeClass
     public void ensurePreconditions() {
         new HeaderPage(driver).clickLogOut().clickRegisterBtn()
-                .createNewAccount("nm456@mail.com", "Qwerty123$").clickAccountBtn();
+                .createNewAccountUser(new User().setEmail(User.REG_EMAIL)
+                        .setPassword(User.REG_PASSWORD).setPassword2(User.REG_PASSWORD)).clickAccountBtn();
     }
 
     @Test(priority = 1)

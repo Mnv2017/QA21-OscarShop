@@ -17,12 +17,19 @@ public class BasketPage extends PageBase {
         return isElementPresent(By.xpath("//h1[contains(.,'Basket')]"));
     }
 
-    @FindBy(css = ".breadcrumb a")
-    WebElement home;
+    public String getItemIName(int i) {
+        return driver.findElement(By.xpath("//*[@id='basket_formset']/div["
+                + i + "]//h3/a")).getText();
+    }
 
-    public BrowseStoreMenuPage returnToHomePage() {
-        click(home);
-        return new BrowseStoreMenuPage(driver);
+    public String getItemIPrice(int i) {
+        return driver.findElement(By.xpath("//*[@id='basket_formset']/div["
+                + i + "]//div[@class='col-sm-1']")).getText();
+    }
+
+    public String getItemITotalPrice(int i) {
+        return driver.findElement(By.xpath("//*[@id='basket_formset']/div["
+                + i + "]//div[@class='col-sm-2']/p")).getText();
     }
 
     @FindBy(id = "id_form-0-quantity")
@@ -31,20 +38,31 @@ public class BasketPage extends PageBase {
     @FindBy(css = ".input-group-btn button")
     WebElement submitBtn;
 
-    public BasketPage deleteBookFromBasket() {
+    public void deleteItemFromBasket() {
         type(numBooks, "0");
         click(submitBtn);
-        return this;
     }
 
     public BasketPage emptyBasket() {
         while (driver.findElements(By.cssSelector(".basket-items")).size() > 0) {
-            new BasketPage(driver).deleteBookFromBasket();
+            new BasketPage(driver).deleteItemFromBasket();
         }
         return this;
     }
 
-    // //*[@id='basket_formset']/div[1]//div[@class='col-sm-2']/p
+    @FindBy(css = "#content_inner p")
+    WebElement emptyMsg;
+
+    public String getMessageText() {
+        return emptyMsg.getText();
+    }
+
+    @FindBy(css = ".alertinner p")
+    WebElement emptyAlert;
+
+    public String getAlertText() {
+        return emptyAlert.getText();
+    }
 
     public String countBasketTotalPrice(int numItems) {
         if (numItems <= 0)
@@ -53,11 +71,8 @@ public class BasketPage extends PageBase {
         for (int i = 1; i <= numItems; i++) {
             String s = "//*[@id='basket_formset']/div[" + i + "]//div[@class='col-sm-2']/p";
             String sItem = driver.findElement(By.xpath(s)).getText().substring(1);
-            System.out.println("******  Сумма " + i + "-го элемента: " + sItem);
-            // ToDo закомментить вывод сумм
             sum += Double.parseDouble(sItem);
         }
-        System.out.println("****** Общая сумма: " + sum);
         return "£" + Precision.round(sum, 2);
     }
 
@@ -76,23 +91,13 @@ public class BasketPage extends PageBase {
         return new ShippingPage(driver);
     }
 
-
-    // локаторы для книги с названием...
-    @FindBy(xpath = "//a[contains(.,'Hacking Work')]/../../..//input[@type='number']")
-    WebElement numBooksInBasket;
-
-    @FindBy(xpath = "//a[contains(.,'Hacking Work')]/../../..//button[@type='submit']")
-    WebElement submitNumBtn;
-
-
-    // увеличиваем количество книг в корзине
-    public BasketPage addNBookToBasket(String num) {
-        type(numBooksInBasket, num);
-        click(submitNumBtn);
+    public BasketPage multipleItemInBasket(int i, int num) {
+        // i - номер строки корзины, num - количество продукта
+        WebElement itemI = driver.findElement(By.cssSelector("#id_form-" + (i - 1) + "-quantity"));
+        type(itemI, "" + num);
+        WebElement itemISubmit = driver.findElement(By.xpath("//*[@id='basket_formset']/div[" + i + "]//button"));
+        click(itemISubmit);
         return this;
     }
 
-
-    //    //a[contains(.,'The City and the Stars')]/../../..//input[@type='number']
-    //    //a[contains(.,'The City and the Stars')]/../../..//button[@type='submit']
 }

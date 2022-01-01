@@ -17,11 +17,12 @@ public class BooksPage extends PageBase {
         return isElementPresent(By.xpath("//h1[contains(.,'Books')]"));
     }
 
-    @FindBy(css = ".breadcrumb a")
-    WebElement home;
+    @FindBy(xpath = "//ol[@class='row']//li[2]")
+    WebElement book2;
 
-    public BrowseStoreMenuPage returnToHomePage() {
-        click(home);
-        return new BrowseStoreMenuPage(driver);
+    public ProductBookPage clickOnNBookInList(int n) {
+        String bookN = "//ol[@class='row']//li[" + n + "]";
+        driver.findElement(By.xpath(bookN)).click();
+        return new ProductBookPage(driver);
     }
 }

@@ -63,7 +63,7 @@ public class TestBase {
         }
     }
 
-    @AfterSuite(enabled = true)
+    @AfterSuite(enabled = false)
     public void tearDown() {
         driver.quit();
     }
