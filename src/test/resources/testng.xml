@@ -6,7 +6,7 @@
             <class name="com.telran.oscar.tests.userTests.RegistrationTests">
                 <methods>
                     <exclude name=".*WrongPasswordNegative.*"/>
-                    <!--                    <exclude name=".*WrongEmailNegative.*"/>-->
+                    <exclude name=".*WrongEmailNegative.*"/>
                 </methods>
             </class>
             <class name="com.telran.oscar.tests.userTests.LoginTests"/>
