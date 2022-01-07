@@ -16,6 +16,7 @@ public class RegistrationTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
+        new HeaderPage(driver).clickOnLogo();
         new HeaderPage(driver).clickLogOut().clickRegisterBtn();
     }
 
@@ -27,14 +28,14 @@ public class RegistrationTests extends TestBase {
         Assert.assertEquals(new HomePage(driver).getAlertText(), "Thanks for registering!");
         Assert.assertEquals(new HeaderPage(driver).clickAccountBtn().getAccountEmail(), User.REG_EMAIL);
     }
-    // ToDo добавить тест с DataProvider для проверки всех позитивных вариантов регистрации
 
     @Test
     public void registrationOldUserNegativeTest() {
         new RegisterPage(driver)
                 .createNewAccountUser(new User().setEmail(User.LOG_EMAIL)
                         .setPassword(User.LOG_PASSWORD).setPassword2(User.LOG_PASSWORD));
-        Assert.assertEquals(new RegisterPage(driver).getErrMessageText(), "A user with that email address already exists");
+        Assert.assertEquals(new RegisterPage(driver).getErrMessageText(),
+                "A user with that email address already exists");
     }
 
     @Test
@@ -78,7 +79,8 @@ public class RegistrationTests extends TestBase {
         new RegisterPage(driver).createNewAccountUser(new User().setEmail(User.REG_EMAIL)
                 .setPassword("Qwerty123$").setPassword2("Qwerty456$"));
         Assert.assertTrue(new RegisterPage(driver).isErrorAlertPresent());
-        Assert.assertEquals(new RegisterPage(driver).getErrMessageText(), "The two password fields didn't match.");
+        Assert.assertEquals(new RegisterPage(driver).getErrMessageText(),
+                "The two password fields didn't match.");
     }
 
     @Test(dataProvider = "newUserWrongEmailFromCSV", dataProviderClass = DataProviders.class)
@@ -88,22 +90,26 @@ public class RegistrationTests extends TestBase {
         Assert.assertTrue(new RegisterPage(driver).isRegisterFormPresent());
     }
 
-    // ToDo -  удалить из списка негативных пароли, разрешающие регистрацию пользователя
-
     @Test(dataProvider = "newUserWrongPasswordFromCSV", dataProviderClass = DataProviders.class)
     public void registrationNewUserWrongPasswordNegativeTest(User user) {
         new RegisterPage(driver)
                 .createNewAccountUser(user);
-        Assert.assertTrue(new RegisterPage(driver).isRegisterFormPresent());
+        var passed = true;
+        if (new HeaderPage(driver).isAccountBtnPresent()) {
+            passed = false;
+            new HeaderPage(driver).clickAccountBtn();
+            new ProfilePage(driver).clickDeleteProfileBtn().deleteProfile(user.getPassword());
+        }
+        Assert.assertTrue(passed);
     }
 
-    @AfterMethod
+    @AfterMethod // для registrationNewUserWrongEmailNegativeTest
     public void deleteAccount() {
         if (new HeaderPage(driver).isAccountBtnPresent()) {
             new HeaderPage(driver).clickAccountBtn();
-            new ProfilePage(driver).clickDeleteProfileBtn().deleteProfile("Qwerty123$");
+            new ProfilePage(driver).clickDeleteProfileBtn().deleteProfile(User.LOG_PASSWORD);
         }
     }
 
-    //ToDo написать смоук-тест регистрация - выход - логин
+
 }

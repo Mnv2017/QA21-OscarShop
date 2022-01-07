@@ -17,7 +17,7 @@ public class HomePageGuestTests extends TestBase {
 
     @BeforeClass
     public void ensurePreconditions(){
-        new HeaderPage(driver).clickLogOut();
+        new HeaderPage(driver).clickLogOut().clickOnLogo();
     }
 
     @Test
@@ -55,15 +55,15 @@ public class HomePageGuestTests extends TestBase {
         new HeaderPage(driver).clickViewBasket();
         Assert.assertTrue(new BasketPage(driver).isBasketPagePresent());
     }
-// TODO перенести BrowseStoreMenu в продукты?
+
     @Test
     public void browseStoreMenuTest(){
         Assert.assertTrue(new BrowseStoreMenuPage(driver).clickOnAllProductsItem().isAllProductsPagePresent());
-        new NavigateMenuPage(driver).returnToHomePage();
+        new NavigateMenuPage(driver).goToHomePage();
         Assert.assertTrue(new BrowseStoreMenuPage(driver).clickOnBooksItem().isBooksPagePresent());
-        new NavigateMenuPage(driver).returnToHomePage();
+        new NavigateMenuPage(driver).goToHomePage();
         Assert.assertTrue(new BrowseStoreMenuPage(driver).clickOnClothingItem().isClothingPagePresent());
-        new NavigateMenuPage(driver).returnToHomePage();
+        new NavigateMenuPage(driver).goToHomePage();
         Assert.assertTrue(new BrowseStoreMenuPage(driver).clickOnOffersItem().isOffersPagePresent());
     }
 }

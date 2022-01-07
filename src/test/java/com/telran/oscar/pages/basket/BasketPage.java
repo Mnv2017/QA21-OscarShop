@@ -23,12 +23,12 @@ public class BasketPage extends PageBase {
     }
 
     public String getItemIPrice(int i) {
-        return driver.findElement(By.xpath("//*[@id='basket_formset']/div["
+        return driver.findElement(By.xpath("//form[@id='basket_formset']/div["
                 + i + "]//div[@class='col-sm-1']")).getText();
     }
 
     public String getItemITotalPrice(int i) {
-        return driver.findElement(By.xpath("//*[@id='basket_formset']/div["
+        return driver.findElement(By.xpath("//form[@id='basket_formset']/div["
                 + i + "]//div[@class='col-sm-2']/p")).getText();
     }
 
@@ -44,7 +44,7 @@ public class BasketPage extends PageBase {
     }
 
     public BasketPage emptyBasket() {
-        while (driver.findElements(By.cssSelector(".basket-items")).size() > 0) {
+        while (driver.findElements(By.cssSelector("div.basket-items")).size() > 0) {
             new BasketPage(driver).deleteItemFromBasket();
         }
         return this;

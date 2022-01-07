@@ -5,12 +5,10 @@ public class User {
     private String password;
     private String password2;
 
-    // ToDo подключить lombok?
-
     public static final String LOG_EMAIL = "nm123@mail.com";
     public static final String LOG_PASSWORD = "Qwerty123$";
 
-    public static final String REG_EMAIL = "nm456@mail.com";
+    public static final String REG_EMAIL = "nm567@mail.com";
     public static final String REG_PASSWORD = "Qwerty123$";
 
     public String getEmail() {

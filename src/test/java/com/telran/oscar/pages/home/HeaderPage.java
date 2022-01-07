@@ -10,29 +10,29 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 public class HeaderPage extends PageBase {
     public HeaderPage(WebDriver driver) {
         super(driver);
     }
 
-    @FindBy(css = "select[name=language]")
-    WebElement languageList;
-
-    @FindBy(css = "#language_selector button")
-    WebElement goBtn;
-
-    public boolean isLanguageSelectElementsPresent() {
-        return isElementPresent(By.cssSelector("select[name=language]"))
-                && isElementPresent(By.cssSelector("#language_selector button"));
-    }
-
-    public HeaderPage setLanguage(String language) {
-        typeSelect(languageList, language);
-        click(goBtn);
-        return this;
-    }
+//    @FindBy(css = "select[name=language]")
+//    WebElement languageList;
+//
+//    @FindBy(css = "#language_selector button")
+//    WebElement goBtn;
+//
+//    public boolean isLanguageSelectElementsPresent() {
+//        return isElementPresent(By.cssSelector("select[name=language]"))
+//                && isElementPresent(By.cssSelector("#language_selector button"));
+//    }
+//
+//    public HeaderPage setLanguage(String language) {
+//        typeSelect(languageList, language);
+//        click(goBtn);
+//        return this;
+//    }
 
     @FindBy(id = "login_link")
     WebElement loginBtn;
@@ -76,7 +76,7 @@ public class HeaderPage extends PageBase {
     }
 
 
-    @FindBy(xpath = "//a[text()='Oscar']")
+    @FindBy(xpath = "//a[contains(.,'Oscar')]")
     WebElement logo;
 
     public HomePage clickOnLogo() {
@@ -84,7 +84,7 @@ public class HeaderPage extends PageBase {
         return new HomePage(driver);
     }
 
-    @FindBy(css = "span.btn-group")
+    @FindBy(css = "span.btn-group a.btn.btn-default")
     WebElement viewBasket;
 
     public BasketPage clickViewBasket() {
@@ -116,7 +116,7 @@ public class HeaderPage extends PageBase {
             return new BrowseStoreMenuPage(driver);
         } else {
             new HeaderPage(driver).clickViewBasket().emptyBasket();
-            return new NavigateMenuPage(driver).returnToHomePage();
+            return new NavigateMenuPage(driver).goToHomePage();
         }
     }
 }

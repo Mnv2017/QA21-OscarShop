@@ -1,6 +1,5 @@
 package com.telran.oscar.tests.basketTests;
 
-import com.telran.oscar.data.User;
 import com.telran.oscar.pages.basket.BasketPage;
 import com.telran.oscar.pages.home.BrowseStoreMenuPage;
 import com.telran.oscar.pages.home.HeaderPage;
@@ -9,22 +8,14 @@ import com.telran.oscar.pages.product.ProductBookPage;
 import com.telran.oscar.pages.product.ProductClothingPage;
 import com.telran.oscar.tests.TestBase;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class BasketLoggedUserTest extends TestBase {
-
-    @BeforeClass
-    public void classPreconditions() {
-        new HeaderPage(driver).clickLogOut().clickLoginBtn()
-                .logInUser(new User().setEmail(User.LOG_EMAIL).setPassword(User.LOG_PASSWORD));
-    }
+public class BasketGuestTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
-        new HeaderPage(driver).clickOnLogo();
+        new HeaderPage(driver).clickLogOut().clickOnLogo();
         new HeaderPage(driver).deleteAllProductsFromBasket();
     }
 
@@ -53,8 +44,8 @@ public class BasketLoggedUserTest extends TestBase {
         Assert.assertEquals(basket.getOrderTotalPrice(), price);
     }
 
-    @Test(priority = 3)
-    public void multipleOneBookInBasketTest() {
+    @Test
+    public void multipleOneBookInBasketPositiveTest() {
         int num = 2; // увеличиваем количество наименования до num
         String price = new BrowseStoreMenuPage(driver).clickOnBooksItem().clickOnBookNInList(1)
                 .addBookToBasket().getBookPrice();
@@ -65,10 +56,11 @@ public class BasketLoggedUserTest extends TestBase {
         Assert.assertEquals(itemTotalPrice, Double.parseDouble(itemStringTotalPrice.substring(1)));
     }
 
-    @Test(priority = 4)
-    public void emptyBasketTest() {
-        new BrowseStoreMenuPage(driver).clickOnBooksItem().clickOnBookNInList(1).addBookToBasket();
-        new NavigateMenuPage(driver).goToHomePage().clickOnClothingItem().clickOnFirstClothingInList()
+    @Test
+    public void emptyBasketPositiveTest() {
+        new BrowseStoreMenuPage(driver).clickOnBooksItem().addBookNToBasket(1);
+        new NavigateMenuPage(driver).goToHomePage();
+        new BrowseStoreMenuPage(driver).clickOnClothingItem().clickOnFirstClothingInList()
                 .addClothingToBasket();
         BasketPage basket = new HeaderPage(driver).clickViewBasket().emptyBasket();
         Assert.assertEquals(basket.getAlertText(), "Your basket is now empty");
@@ -76,10 +68,4 @@ public class BasketLoggedUserTest extends TestBase {
         new NavigateMenuPage(driver).goToHomePage();
         Assert.assertTrue(new HeaderPage(driver).getBasketSum().contains("£0.00"));
     }
-
-    @AfterClass
-    public void postConditions() {
-        new HeaderPage(driver).clickLogOut();
-    }
-    //ToDo добавить два продукта не из карточки, а из списка, проверить названия и суммы в корзине, общую сумму?
 }

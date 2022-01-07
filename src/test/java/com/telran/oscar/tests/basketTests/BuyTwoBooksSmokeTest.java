@@ -19,25 +19,34 @@ public class BuyTwoBooksSmokeTest extends TestBase {
         new HeaderPage(driver).clickLogOut()
                 .clickLoginBtn()
                 .logInUser(new User().setEmail(User.LOG_EMAIL).setPassword(User.LOG_PASSWORD));
+
+//        new HeaderPage(driver).clickLogOut()
+//                .clickRegisterBtn().createNewAccountUser(new User()
+//                .setEmail(User.REG_EMAIL).setPassword(User.REG_PASSWORD).setPassword2(User.REG_PASSWORD));
+
         new HeaderPage(driver).deleteAllProductsFromBasket();
+        new BrowseStoreMenuPage(driver).clickOnBooksItem().addBookNToBasket(4);
+        new HeaderPage(driver).searchProductByName("Hacking Work")
+                .clickOnSelectedBook("Hacking Work")
+                .addBookToBasket();
     }
 
     @Test
     public void buyTwoBooksPositiveTest() {
-        new BrowseStoreMenuPage(driver).clickOnBooksItem().clickOnNBookInList(4).addBookToBasket();
-        new HeaderPage(driver).searchProductByName("Hacking Work")
-                .clickOnSelectedBook("Hacking Work")
-                .addBookToBasket();
         String itemsSum = new HeaderPage(driver).clickViewBasket().countBasketTotalPrice(2);
         Assert.assertEquals(itemsSum, new BasketPage(driver).getOrderTotalPrice());
 
         String orderNum = new BasketPage(driver).clickProceedToCheckout().specifyShippingAddress().continueToPreview()
                 .clickPlaceOrderBtn().getOrderNum();
         new ConfirmationPage(driver).clickContinueShopping().clickAccountBtn();
-        new AccountSidebarPage(driver).clickOrderHistory();
+        new AccountSidebarPage(driver).clickOrderHistoryItem();
         Assert.assertEquals(itemsSum, new OrderHistoryPage(driver).getLastOrderSum());
         Assert.assertEquals(orderNum, new OrderHistoryPage(driver).getLastOrderNumber());
 
     }
 
+//    @AfterMethod
+//    public void postConditions(){
+//        new HeaderPage(driver).clickAccountBtn().clickDeleteProfileBtn().deleteProfile(User.REG_PASSWORD);
+//    }
 }

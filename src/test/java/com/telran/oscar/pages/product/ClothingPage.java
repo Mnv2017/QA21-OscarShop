@@ -18,37 +18,48 @@ public class ClothingPage extends PageBase {
         return isElementPresent(By.xpath("//h1[contains(.,'Clothing')]"));
     }
 
-    @FindBy(xpath = "//ol[@class='row']//li[1]")
-    WebElement firsClothing;
+    @FindBy(xpath = "//ol[@class='row']//li[1]//h3/a")
+    WebElement firstClothing;
 
-    public ClothingPage clickOnFirstClothingInList() {
-        click(firsClothing);
-        return this;
+    public ProductClothingPage clickOnFirstClothingInList() {
+        click(firstClothing);
+        return new ProductClothingPage(driver);
     }
 
-    @FindBy(xpath = "//a[contains(.,'Django T-shirt')]")
-    WebElement firstVariant;
-
-    @FindBy(id = "add_to_basket_form")
-    WebElement addToBasketBtn;
-
-    public ClothingPage addClothingToBasket() {
-        click(firstVariant);
-        click(addToBasketBtn);
-        return this;
+    public String getFirstClothingInListName() {
+        return firstClothing.getAttribute("title");
     }
 
-    @FindBy(css = "h1")
-    WebElement name;
+    @FindBy(xpath = "//ol[@class='row']//li[1]//p[@class='price_color']")
+    WebElement firstClothingPrice;
 
-    public String getClothingName() {
-        return name.getText();
+    public String getFirstClothingInListPrice() {
+        return firstClothingPrice.getText();
     }
 
-    @FindBy(css = "div.row p.price_color")
-    WebElement price;
-
-    public String getClothingPrice() {
-        return price.getText();
-    }
+//    @FindBy(xpath = "//a[contains(.,'Django T-shirt')]")
+//    WebElement firstVariant;
+//
+//    @FindBy(id = "add_to_basket_form")
+//    WebElement addToBasketBtn;
+//
+//    public ClothingPage addClothingToBasket() {
+//        click(firstVariant);
+//        click(addToBasketBtn);
+//        return this;
+//    }
+//
+//    @FindBy(css = "h1")
+//    WebElement name;
+//
+//    public String getClothingName() {
+//        return name.getText();
+//    }
+//
+//    @FindBy(css = "div.row p.price_color")
+//    WebElement price;
+//
+//    public String getClothingPrice() {
+//        return price.getText();
+//    }
 }

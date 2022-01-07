@@ -22,11 +22,16 @@ public class AccountSidebarPage extends PageBase {
     @FindBy(xpath = "//a[text()='Order History']")
     WebElement orderHistory;
 
-    public OrderHistoryPage clickOrderHistory() {
+    public OrderHistoryPage clickOrderHistoryItem() {
         click(orderHistory);
         return new OrderHistoryPage(driver);
     }
 
     @FindBy(xpath = "//a[text()='Address Book']")
     WebElement addressBook;
+
+    public AddressPage clickAddressBookItem(){
+        click(addressBook);
+        return new AddressPage(driver);
+    }
 }

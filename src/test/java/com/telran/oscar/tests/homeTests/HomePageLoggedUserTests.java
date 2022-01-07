@@ -32,15 +32,15 @@ public class HomePageLoggedUserTests extends TestBase {
         new BrowseStoreMenuPage(driver).clickOnAllProductsItem();
         Assert.assertTrue(new HeaderPage(driver).clickOnLogo().isHomePagePresent());
     }
-    // TODO перенести BrowseStoreMenu в продукты?
+
     @Test(priority = 2)
-    public void browseStoreMenuTest() {
+    public void browseStoreMenuTest(){
         Assert.assertTrue(new BrowseStoreMenuPage(driver).clickOnAllProductsItem().isAllProductsPagePresent());
-        new NavigateMenuPage(driver).returnToHomePage();
+        new NavigateMenuPage(driver).goToHomePage();
         Assert.assertTrue(new BrowseStoreMenuPage(driver).clickOnBooksItem().isBooksPagePresent());
-        new NavigateMenuPage(driver).returnToHomePage();
+        new NavigateMenuPage(driver).goToHomePage();
         Assert.assertTrue(new BrowseStoreMenuPage(driver).clickOnClothingItem().isClothingPagePresent());
-        new NavigateMenuPage(driver).returnToHomePage();
+        new NavigateMenuPage(driver).goToHomePage();
         Assert.assertTrue(new BrowseStoreMenuPage(driver).clickOnOffersItem().isOffersPagePresent());
     }
 
@@ -69,5 +69,6 @@ public class HomePageLoggedUserTests extends TestBase {
         new HeaderPage(driver).clickLogOut();
         Assert.assertTrue(new HomePage(driver).isHomePagePresent());
     }
+
 
 }

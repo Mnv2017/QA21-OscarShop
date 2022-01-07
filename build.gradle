@@ -17,6 +17,12 @@ dependencies {
 
 }
 
+task testAll(type:Test) {
+    useTestNG(){
+        suites 'src/test/resources/testng.xml'
+    }
+}
+
 task testUser(type:Test) {
     useTestNG(){
         suites 'src/test/resources/testng_user.xml'
@@ -26,6 +32,12 @@ task testUser(type:Test) {
 task testHome(type:Test) {
     useTestNG(){
         suites 'src/test/resources/testng_home.xml'
+    }
+}
+
+task testProduct(type:Test) {
+    useTestNG(){
+        suites 'src/test/resources/testng_product.xml'
     }
 }
 

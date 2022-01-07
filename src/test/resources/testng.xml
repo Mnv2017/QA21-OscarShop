@@ -1,0 +1,25 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="RegressionUserTests" verbose="1">
+    <test name="UserTest">
+        <classes>
+            <class name="com.telran.oscar.tests.userTests.RegistrationTests">
+                <methods>
+                    <exclude name=".*WrongPasswordNegative.*"/>
+                    <!--                    <exclude name=".*WrongEmailNegative.*"/>-->
+                </methods>
+            </class>
+            <class name="com.telran.oscar.tests.userTests.LoginTests"/>
+            <class name="com.telran.oscar.tests.userTests.AccountTests"/>
+            <!--            <class name="com.telran.oscar.tests.userTests.OrderHistoryTests"/>-->
+            <!--            <class name="com.telran.oscar.tests.userTests.UserSmokeTest"/>-->
+            <class name="com.telran.oscar.tests.homeTests.HomePageGuestTests"/>
+            <class name="com.telran.oscar.tests.homeTests.HomePageLoggedUserTests"/>
+            <class name="com.telran.oscar.tests.productTests.ProductsListGuestTests"/>
+            <class name="com.telran.oscar.tests.productTests.ProductsViewCardUserTests"/>
+            <class name="com.telran.oscar.tests.productTests.OffersListTests"/>
+            <class name="com.telran.oscar.tests.basketTests.BasketGuestTests"/>
+            <class name="com.telran.oscar.tests.basketTests.BasketLoggedUserTest"/>
+        </classes>
+    </test>
+</suite>

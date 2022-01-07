@@ -6,10 +6,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.Select;
 
 public class PageBase {
     // добавить неявные ожидание и screenshot
+//    protected WebDriver driver;
     protected WebDriver driver;
 
     public PageBase(WebDriver driver) {
@@ -66,4 +68,6 @@ public class PageBase {
     public boolean isElementPresent(By locator) {
          return driver.findElements(locator).size() > 0;
     }
+
+
 }

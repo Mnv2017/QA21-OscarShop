@@ -21,4 +21,18 @@ public class AllProductsPage extends PageBase {
         driver.findElement(By.xpath(bookN)).click();
         return new ProductBookPage(driver);
     }
+
+    @FindBy(xpath = "//div[@class='alertinner ']")
+    WebElement alert;
+
+    public String getAlertText() {
+        return alert.getText();
+    }
+
+    @FindBy(css = ".alertinner strong")
+    WebElement name;
+
+    public String getProductNameFromAlert() {
+        return name.getText();
+    }
 }

@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 public class HomePage extends PageBase {
     public HomePage(WebDriver driver) {
@@ -37,22 +38,11 @@ public class HomePage extends PageBase {
         return otherGoodBooksHeader.getText();
     }
 
-    @FindBy(css = ".alertinner.wicon")
+    @FindBy(css = "#messages .alertinner.wicon")
     WebElement alertInner;
 
     public String getAlertText() {
         return alertInner.getText();
-    }
-
-
-
-
-    @FindBy(css = ".col-sm-3 .thumbnail")
-    WebElement recomReading;
-
-    public ProductBookPage clickOnRecommendReading() {
-        clickWithAction(recomReading);
-        return new ProductBookPage(driver);
     }
 
 }

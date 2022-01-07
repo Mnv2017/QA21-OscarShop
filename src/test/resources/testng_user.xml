@@ -3,14 +3,16 @@
 <suite name="RegressionUserTests" verbose="1">
     <test name="UserTest">
         <classes>
-            <class name="com.telran.oscar.tests.userTests.ProfileTests"/>
-            <class name="com.telran.oscar.tests.userTests.LoginTests"/>
             <class name="com.telran.oscar.tests.userTests.RegistrationTests">
-                <methods>
-                    <exclude name=".*NewUserWrongPassword.*"/>
-                    <exclude name=".*NewUserWrongEmail.*"/>
-                </methods>
+<!--                <methods>-->
+<!--                    <exclude name=".*WrongPasswordNegative.*"/>-->
+<!--                    <exclude name=".*WrongEmailNegative.*"/>-->
+<!--                </methods>-->
             </class>
+            <class name="com.telran.oscar.tests.userTests.LoginTests"/>
+            <class name="com.telran.oscar.tests.userTests.AccountTests"/>
+            <!--            <class name="com.telran.oscar.tests.userTests.OrderHistoryTests"/>-->
+            <!--            <class name="com.telran.oscar.tests.userTests.UserSmokeTest"/>-->
         </classes>
     </test>
 </suite>

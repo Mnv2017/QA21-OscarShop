@@ -3,8 +3,8 @@
 <suite name="RegressionHomeTests" verbose="1">
     <test name="BasketTests">
         <classes>
-            <class name="com.telran.oscar.tests.basketTests.BasketLoggedUserTest">
-        </class>
+            <class name="com.telran.oscar.tests.basketTests.BasketGuestTests"/>
+            <class name="com.telran.oscar.tests.basketTests.BasketLoggedUserTest"/>
         </classes>
     </test>
 </suite>

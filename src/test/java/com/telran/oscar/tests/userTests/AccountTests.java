@@ -1,9 +1,11 @@
 package com.telran.oscar.tests.userTests;
 
+import com.telran.oscar.data.Address;
 import com.telran.oscar.data.User;
 import com.telran.oscar.pages.home.HeaderPage;
 import com.telran.oscar.pages.home.HomePage;
 import com.telran.oscar.pages.user.AccountSidebarPage;
+import com.telran.oscar.pages.user.AddressPage;
 import com.telran.oscar.pages.user.ChangePasswordPage;
 import com.telran.oscar.pages.user.ProfilePage;
 import com.telran.oscar.tests.TestBase;
@@ -12,7 +14,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class ProfileTests extends TestBase {
+public class AccountTests extends TestBase {
 
     @BeforeClass
     public void ensurePreconditions() {
@@ -42,15 +44,29 @@ public class ProfileTests extends TestBase {
     }
 
     @Test(priority = 4)
+    public void addAndEditAddressTest() {
+        AddressPage addressPage = new AccountSidebarPage(driver).clickAddressBookItem().clickAddNewAddressBtn()
+                .fillShippingAddressForm().clickSaveAddressBtn();
+        Assert.assertTrue(addressPage.getAddress().contains(Address.F_NAME));
+        Assert.assertTrue(addressPage.getAddress().contains(Address.L_NAME));
+        Assert.assertTrue(addressPage.getAddress().contains(Address.AD_LINE1));
+        Assert.assertTrue(addressPage.getAddress().contains(Address.POST_CODE));
+        Assert.assertTrue(addressPage.getAddress().contains(Address.COUNTRY));
+
+        addressPage.clickEditBtn().editFirstLineAddress(Address.EDIT_AD_LINE1).clickSaveAddressBtn();
+        Assert.assertTrue(addressPage.getAddress().contains(Address.EDIT_AD_LINE1));
+    }
+
+    @Test(priority = 5)
     public void deleteAccountTest() {
         new AccountSidebarPage(driver).getProfilePage().clickDeleteProfileBtn().deleteProfile("Qwerty1234$");
         Assert.assertEquals(new HomePage(driver)
                 .getAlertText(), "Your profile has now been deleted. Thanks for using the site.");
     }
 
-    @AfterClass
-    public void logOut() {
-        new HeaderPage(driver).clickLogOut();
-    }
+//    @AfterClass
+//    public void logOut() {
+//        new HeaderPage(driver).clickLogOut();
+//    }
 
 }

@@ -15,6 +15,7 @@ import org.testng.annotations.*;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
@@ -37,16 +38,18 @@ public class TestBase {
         driver = new EventFiringWebDriver(new ChromeDriver());
 //        driver = new EventFiringWebDriver(new FirefoxDriver());
 
+        // ToDo добавить разные браузеры
         driver.manage().window().maximize();
 //        driver.manage().window().setSize(new Dimension(1800,900));
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://selenium1py.pythonanywhere.com");
+        driver.get("https://selenium1py.pythonanywhere.com/en-gb");
 //        driver.get(baseURL); // если используем файл с Properties
         driver.register(new MyListener());
 
-        new HeaderPage(driver).setLanguage("British English");
-        cookieLanguage = driver.manage().getCookieNamed("django_language");
-        System.out.println("#############  " + cookieLanguage.toString());
+        Cookie cookieEn = new Cookie("django_language", "en-gb");
+        driver.manage().addCookie(cookieEn);
+//        new HeaderPage(driver).setLanguage("British English");
+
     }
 
     @BeforeMethod
@@ -63,8 +66,10 @@ public class TestBase {
         }
     }
 
-    @AfterSuite(enabled = false)
+    @AfterSuite
     public void tearDown() {
         driver.quit();
     }
+
+    // ToDo Jenkins - подключить отчеты
 }
