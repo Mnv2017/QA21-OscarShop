@@ -17,8 +17,8 @@
             <class name="com.telran.oscar.tests.productTests.ProductsListGuestTests"/>
             <class name="com.telran.oscar.tests.productTests.ProductsViewCardUserTests"/>
             <class name="com.telran.oscar.tests.productTests.OffersListTests"/>
-            <class name="com.telran.oscar.tests.basketTests.BasketGuestTests"/>
             <class name="com.telran.oscar.tests.basketTests.BasketLoggedUserTest"/>
+            <class name="com.telran.oscar.tests.basketTests.BasketGuestTests"/>
         </classes>
     </test>
 </suite>
