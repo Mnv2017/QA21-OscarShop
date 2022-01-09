@@ -10,14 +10,13 @@ import com.telran.oscar.pages.user.ChangePasswordPage;
 import com.telran.oscar.pages.user.ProfilePage;
 import com.telran.oscar.tests.TestBase;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 public class AccountTests extends TestBase {
 
     @BeforeClass
-    public void ensurePreconditions() {
+    public void ensurePreconditions() throws InterruptedException {
         new HeaderPage(driver).clickLogOut().clickRegisterBtn()
                 .createNewAccountUser(new User().setEmail(User.REG_EMAIL)
                         .setPassword(User.REG_PASSWORD).setPassword2(User.REG_PASSWORD)).clickAccountBtn();
@@ -58,15 +57,10 @@ public class AccountTests extends TestBase {
     }
 
     @Test(priority = 5)
-    public void deleteAccountTest() {
+    public void deleteAccountTest() throws InterruptedException {
         new AccountSidebarPage(driver).getProfilePage().clickDeleteProfileBtn().deleteProfile("Qwerty1234$");
         Assert.assertEquals(new HomePage(driver)
                 .getAlertText(), "Your profile has now been deleted. Thanks for using the site.");
     }
-
-//    @AfterClass
-//    public void logOut() {
-//        new HeaderPage(driver).clickLogOut();
-//    }
 
 }

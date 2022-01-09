@@ -22,7 +22,7 @@ public class HomePageLoggedUserTests extends TestBase {
     }
 
     @Test(priority = 1)
-    public void comeBackToHomepageWithLogoTest() {
+    public void comeBackToHomepageWithLogoTest() throws InterruptedException {
         new HeaderPage(driver).clickAccountBtn();
         Assert.assertTrue(new HeaderPage(driver).clickOnLogo().isHomePagePresent());
         new HeaderPage(driver).clickViewBasket();
@@ -57,7 +57,7 @@ public class HomePageLoggedUserTests extends TestBase {
     }
 
     @Test(priority = 5)
-    public void accountLinkTest() {
+    public void accountLinkTest() throws InterruptedException {
         Assert.assertTrue(new HeaderPage(driver).isAccountBtnPresent());
         new HeaderPage(driver).clickAccountBtn();
         Assert.assertTrue(new ProfilePage(driver).isProfilePagePresent());

@@ -7,6 +7,8 @@ import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 public class TestBase {
     public static EventFiringWebDriver driver;
     Logger logger = LoggerFactory.getLogger(TestBase.class);
-    public Cookie cookieLanguage;
+    String browser = System.getProperty("browser", BrowserType.CHROME);
 
     public static String baseURL = PropertiesLoader.loadProperty("url");
     public static String validEmail = PropertiesLoader.loadProperty("valid.email");
@@ -35,20 +37,24 @@ public class TestBase {
 //        options.addArguments("windows-size=1200x800"); // задаем размер невидимого экрана
 //        driver = new ChromeDriver(options);
 
-        driver = new EventFiringWebDriver(new ChromeDriver());
-//        driver = new EventFiringWebDriver(new FirefoxDriver());
+        if (browser.equals(BrowserType.CHROME)){
+            driver = new EventFiringWebDriver(new ChromeDriver());
+        } else if (browser.equals(BrowserType.FIREFOX)){
+            driver = new EventFiringWebDriver(new FirefoxDriver());
+        } else if (browser.equals(BrowserType.SAFARI)){
+            driver = new EventFiringWebDriver(new SafariDriver());
+        }
 
-        // ToDo добавить разные браузеры
         driver.manage().window().maximize();
 //        driver.manage().window().setSize(new Dimension(1800,900));
+//        driver.get(baseURL); // если используем файл с Properties
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://selenium1py.pythonanywhere.com/en-gb");
-//        driver.get(baseURL); // если используем файл с Properties
+
         driver.register(new MyListener());
 
         Cookie cookieEn = new Cookie("django_language", "en-gb");
         driver.manage().addCookie(cookieEn);
-//        new HeaderPage(driver).setLanguage("British English");
 
     }
 
@@ -70,6 +76,4 @@ public class TestBase {
     public void tearDown() {
         driver.quit();
     }
-
-    // ToDo Jenkins - подключить отчеты
 }

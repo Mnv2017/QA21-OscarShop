@@ -70,7 +70,8 @@ public class HeaderPage extends PageBase {
     @FindBy(xpath = "//a[contains(.,'Account')]")
     WebElement accountBtn;
 
-    public ProfilePage clickAccountBtn() {
+    public ProfilePage clickAccountBtn() throws InterruptedException {
+        Thread.sleep(1000);
         click(accountBtn);
         return new ProfilePage(driver);
     }

@@ -18,7 +18,7 @@ public class LoginTests extends TestBase {
     }
 
     @Test(priority = 1)
-    public void loginUserPositiveTest() {
+    public void loginUserPositiveTest() throws InterruptedException {
         new LoginPage(driver).logInUser(new User().setEmail(User.LOG_EMAIL).setPassword(User.LOG_PASSWORD));
         Assert.assertEquals(new HomePage(driver).getAlertText(), "Welcome back");
         Assert.assertEquals(new HeaderPage(driver).clickAccountBtn().getAccountEmail(), User.LOG_EMAIL);

@@ -81,5 +81,4 @@ public class BasketLoggedUserTest extends TestBase {
     public void postConditions() {
         new HeaderPage(driver).clickLogOut();
     }
-    //ToDo добавить два продукта не из карточки, а из списка, проверить названия и суммы в корзине, общую сумму?
 }

@@ -41,7 +41,8 @@ public class HomePage extends PageBase {
     @FindBy(css = "#messages .alertinner.wicon")
     WebElement alertInner;
 
-    public String getAlertText() {
+    public String getAlertText() throws InterruptedException {
+        Thread.sleep(1000);
         return alertInner.getText();
     }
 

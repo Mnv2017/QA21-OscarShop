@@ -21,7 +21,7 @@ public class RegistrationTests extends TestBase {
     }
 
     @Test
-    public void registrationNewUserPositiveTest() {
+    public void registrationNewUserPositiveTest() throws InterruptedException {
         new RegisterPage(driver)
                 .createNewAccountUser(new User().setEmail(User.REG_EMAIL)
                         .setPassword(User.REG_PASSWORD).setPassword2(User.REG_PASSWORD));
@@ -91,7 +91,7 @@ public class RegistrationTests extends TestBase {
     }
 
     @Test(dataProvider = "newUserWrongPasswordFromCSV", dataProviderClass = DataProviders.class)
-    public void registrationNewUserWrongPasswordNegativeTest(User user) {
+    public void registrationNewUserWrongPasswordNegativeTest(User user) throws InterruptedException {
         new RegisterPage(driver)
                 .createNewAccountUser(user);
         var passed = true;
@@ -104,7 +104,7 @@ public class RegistrationTests extends TestBase {
     }
 
     @AfterMethod // для registrationNewUserWrongEmailNegativeTest
-    public void deleteAccount() {
+    public void deleteAccount() throws InterruptedException {
         if (new HeaderPage(driver).isAccountBtnPresent()) {
             new HeaderPage(driver).clickAccountBtn();
             new ProfilePage(driver).clickDeleteProfileBtn().deleteProfile(User.LOG_PASSWORD);

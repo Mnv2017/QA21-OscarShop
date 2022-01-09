@@ -11,8 +11,8 @@
             </class>
             <class name="com.telran.oscar.tests.userTests.LoginTests"/>
             <class name="com.telran.oscar.tests.userTests.AccountTests"/>
-            <!--            <class name="com.telran.oscar.tests.userTests.OrderHistoryTests"/>-->
-            <!--            <class name="com.telran.oscar.tests.userTests.UserSmokeTest"/>-->
+            <class name="com.telran.oscar.tests.userTests.OrderHistoryTests"/>
+            <class name="com.telran.oscar.tests.userTests.UserSmokeTest"/>
             <class name="com.telran.oscar.tests.homeTests.HomePageGuestTests"/>
             <class name="com.telran.oscar.tests.homeTests.HomePageLoggedUserTests"/>
             <class name="com.telran.oscar.tests.productTests.ProductsListGuestTests"/>
