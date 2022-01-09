@@ -14,7 +14,8 @@ public class NavigateMenuPage extends PageBase {
     @FindBy(css = ".breadcrumb a")
     WebElement home;
 
-    public BrowseStoreMenuPage goToHomePage() {
+    public BrowseStoreMenuPage goToHomePage() throws InterruptedException {
+        Thread.sleep(2000);
         click(home);
         return new BrowseStoreMenuPage(driver);
     }

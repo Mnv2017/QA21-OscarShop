@@ -40,7 +40,7 @@ public class HomePage extends PageBase {
     WebElement alertInner;
 
     public String getAlertText() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         return alertInner.getText();
     }
 

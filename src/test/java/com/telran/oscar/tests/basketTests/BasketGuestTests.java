@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 public class BasketGuestTests extends TestBase {
 
     @BeforeMethod
-    public void ensurePreconditions() {
+    public void ensurePreconditions() throws InterruptedException {
         new HeaderPage(driver).clickLogOut().clickOnLogo();
         new HeaderPage(driver).deleteAllProductsFromBasket();
     }
@@ -57,7 +57,7 @@ public class BasketGuestTests extends TestBase {
     }
 
     @Test
-    public void emptyBasketPositiveTest() {
+    public void emptyBasketPositiveTest() throws InterruptedException {
         new BrowseStoreMenuPage(driver).clickOnBooksItem().addBookNToBasket(1);
         new NavigateMenuPage(driver).goToHomePage();
         new BrowseStoreMenuPage(driver).clickOnClothingItem().clickOnFirstClothingInList()

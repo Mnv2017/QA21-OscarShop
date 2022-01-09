@@ -23,7 +23,7 @@ public class BasketLoggedUserTest extends TestBase {
     }
 
     @BeforeMethod
-    public void ensurePreconditions() {
+    public void ensurePreconditions() throws InterruptedException {
         new HeaderPage(driver).clickOnLogo();
         new HeaderPage(driver).deleteAllProductsFromBasket();
     }
@@ -66,7 +66,7 @@ public class BasketLoggedUserTest extends TestBase {
     }
 
     @Test
-    public void emptyBasketTest() {
+    public void emptyBasketTest() throws InterruptedException {
         new BrowseStoreMenuPage(driver).clickOnBooksItem().addBookNToBasket(1);
         new NavigateMenuPage(driver).goToHomePage().clickOnClothingItem().clickOnFirstClothingInList()
                 .addClothingToBasket();

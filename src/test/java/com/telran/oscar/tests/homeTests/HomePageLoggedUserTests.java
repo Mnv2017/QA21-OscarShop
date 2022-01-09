@@ -34,7 +34,7 @@ public class HomePageLoggedUserTests extends TestBase {
     }
 
     @Test(priority = 2)
-    public void browseStoreMenuTest(){
+    public void browseStoreMenuTest() throws InterruptedException {
         Assert.assertTrue(new BrowseStoreMenuPage(driver).clickOnAllProductsItem().isAllProductsPagePresent());
         new NavigateMenuPage(driver).goToHomePage();
         Assert.assertTrue(new BrowseStoreMenuPage(driver).clickOnBooksItem().isBooksPagePresent());

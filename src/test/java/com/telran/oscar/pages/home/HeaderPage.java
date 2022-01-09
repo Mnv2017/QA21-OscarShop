@@ -51,7 +51,7 @@ public class HeaderPage extends PageBase {
     WebElement accountBtn;
 
     public ProfilePage clickAccountBtn() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         click(accountBtn);
         return new ProfilePage(driver);
     }
@@ -91,7 +91,7 @@ public class HeaderPage extends PageBase {
         return new SearchPage(driver);
     }
 
-    public BrowseStoreMenuPage deleteAllProductsFromBasket() {
+    public BrowseStoreMenuPage deleteAllProductsFromBasket() throws InterruptedException {
         if (new HeaderPage(driver).getBasketSum().contains("£0.00")) {
             return new BrowseStoreMenuPage(driver);
         } else {

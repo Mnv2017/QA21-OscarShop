@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 public class BuyTwoBooksSmokeTest extends TestBase {
 
     @BeforeMethod
-    public void ensurePreconditions() {
+    public void ensurePreconditions() throws InterruptedException {
         new HeaderPage(driver).clickLogOut()
                 .clickLoginBtn()
                 .logInUser(new User().setEmail(User.LOG_EMAIL).setPassword(User.LOG_PASSWORD));

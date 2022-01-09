@@ -12,13 +12,11 @@
                 </methods>
             </class>
             <class name="com.telran.oscar.tests.userTests.AccountTests"/>
-            <class name="com.telran.oscar.tests.homeTests.HomePageGuestTests"/>
             <class name="com.telran.oscar.tests.homeTests.HomePageLoggedUserTests"/>
             <class name="com.telran.oscar.tests.productTests.ProductsListGuestTests"/>
             <class name="com.telran.oscar.tests.productTests.ProductsViewCardUserTests"/>
             <class name="com.telran.oscar.tests.productTests.OffersListTests"/>
             <class name="com.telran.oscar.tests.basketTests.BasketLoggedUserTest"/>
-            <class name="com.telran.oscar.tests.basketTests.BasketGuestTests"/>
         </classes>
     </test>
 </suite>

@@ -53,7 +53,7 @@ public class ProductsViewCardUserTests extends TestBase {
     }
 
     @Test
-    public void sectionProductsYouRecentlyViewedTest() {
+    public void sectionProductsYouRecentlyViewedTest() throws InterruptedException {
         driver.manage().deleteCookieNamed("oscar_history");
         String firstViewedBookName = new BrowseStoreMenuPage(driver).clickOnBooksItem()
                 .getBookNName(1);
@@ -67,7 +67,7 @@ public class ProductsViewCardUserTests extends TestBase {
     }
 
     @Test
-    public void addBookFromCardToBasketTest() {
+    public void addBookFromCardToBasketTest() throws InterruptedException {
         new HeaderPage(driver).deleteAllProductsFromBasket();
         ProductBookPage productBookPage = new BrowseStoreMenuPage(driver).clickOnBooksItem().clickOnBookNInList(4);
         String name = productBookPage.getBookName();

@@ -63,7 +63,7 @@ public class ProductsListGuestTests extends TestBase {
     }
 
     @Test
-    public void productNavigateMenuTest() {
+    public void productNavigateMenuTest() throws InterruptedException {
         new BrowseStoreMenuPage(driver).clickOnBooksItem();
         NavigateMenuPage navigateMenuPage = new NavigateMenuPage(driver);
         Assert.assertTrue(navigateMenuPage.goToClothingPage().isClothingPagePresent());
@@ -77,7 +77,7 @@ public class ProductsListGuestTests extends TestBase {
     }
 
     @Test
-    public void addBookNFromListToBasket() {
+    public void addBookNFromListToBasket() throws InterruptedException {
         BooksPage booksPage = new BrowseStoreMenuPage(driver).clickOnBooksItem();
         String name = booksPage.getBookNName(1);
         String price = booksPage.getBookNPrice(1);
