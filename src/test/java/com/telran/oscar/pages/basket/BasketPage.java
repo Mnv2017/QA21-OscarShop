@@ -1,7 +1,6 @@
 package com.telran.oscar.pages.basket;
 
 import com.telran.oscar.pages.PageBase;
-import com.telran.oscar.pages.home.BrowseStoreMenuPage;
 import org.apache.commons.math3.util.Precision;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

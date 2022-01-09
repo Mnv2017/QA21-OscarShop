@@ -26,39 +26,6 @@ task testAll(type:Test) {
     }
 }
 
-task testUser(type:Test) {
-    useTestNG(){
-        suites 'src/test/resources/testng_user.xml'
-    }
-    if(project.hasProperty('browser')) {
-        systemProperty 'browser', "${browser}"
-    }
-}
-
-task testHome(type:Test) {
-    useTestNG(){
-        suites 'src/test/resources/testng_home.xml'
-    }
-    if(project.hasProperty('browser')) {
-        systemProperty 'browser', "${browser}"
-    }
-}
-
-task testProduct(type:Test) {
-    useTestNG(){
-        suites 'src/test/resources/testng_product.xml'
-    }
-    if(project.hasProperty('browser')) {
-        systemProperty 'browser', "${browser}"
-    }
-}
-
-task testBasket(type:Test) {
-    useTestNG(){
-        suites 'src/test/resources/testng_basket.xml'
-    }
-}
-
 task testSmoke1(type:Test) {
     useTestNG(){
         suites 'src/test/resources/testng_smoke1.xml'

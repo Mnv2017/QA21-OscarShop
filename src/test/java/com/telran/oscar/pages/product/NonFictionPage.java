@@ -17,7 +17,6 @@ public class NonFictionPage extends PageBase {
         return isElementPresent(By.xpath("//h1[contains(.,'Essential programming')]"));
     }
 
-
     public boolean isHackingPagePresent() {
         return isElementPresent(By.xpath("//h1[contains(.,'Hacking')]"));
     }

@@ -73,6 +73,7 @@ public class ProductsListGuestTests extends TestBase {
         Assert.assertTrue(navigateMenuPage.goToNonFictionPage().isNonFictionPagePresent());
         Assert.assertTrue(navigateMenuPage.goToEssentialPage().isEssentialPagePresent());
         Assert.assertTrue(navigateMenuPage.goToHackingPage().isHackingPagePresent());
+        navigateMenuPage.goToHomePage();
     }
 
     @Test

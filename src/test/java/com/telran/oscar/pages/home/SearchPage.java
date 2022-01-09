@@ -5,7 +5,6 @@ import com.telran.oscar.pages.product.ProductBookPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 public class SearchPage extends PageBase {
     public SearchPage(WebDriver driver) {

@@ -1,7 +1,6 @@
 package com.telran.oscar.pages.product;
 
 import com.telran.oscar.pages.PageBase;
-import com.telran.oscar.pages.home.BrowseStoreMenuPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -76,13 +75,6 @@ public class OffersPage extends PageBase {
 
     public String getAlertText() {
         return alert.getText();
-    }
-
-    @FindBy(css = ".alertinner strong")
-    WebElement name;
-
-    public String getProductNameFromAlert() {
-        return name.getText();
     }
 
 }

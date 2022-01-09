@@ -13,7 +13,7 @@ public class FictionPage extends PageBase {
         return isElementPresent(By.xpath("//h1[text()='Fiction']"));
     }
 
-    public boolean isComputerInLiteraturePagePresent(){
+    public boolean isComputerInLiteraturePagePresent() {
         return isElementPresent(By.xpath("//h1[contains(.,'Computers in Literature')]"));
     }
 }

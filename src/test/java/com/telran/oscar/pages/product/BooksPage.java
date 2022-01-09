@@ -35,7 +35,6 @@ public class BooksPage extends PageBase {
         return this;
     }
 
-
     @FindBy(xpath = "//div[@id='messages']//div[1]//div[@class='alertinner ']")
     WebElement alert1;
 

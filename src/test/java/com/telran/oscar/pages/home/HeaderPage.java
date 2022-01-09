@@ -10,29 +10,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 public class HeaderPage extends PageBase {
     public HeaderPage(WebDriver driver) {
         super(driver);
     }
-
-//    @FindBy(css = "select[name=language]")
-//    WebElement languageList;
-//
-//    @FindBy(css = "#language_selector button")
-//    WebElement goBtn;
-//
-//    public boolean isLanguageSelectElementsPresent() {
-//        return isElementPresent(By.cssSelector("select[name=language]"))
-//                && isElementPresent(By.cssSelector("#language_selector button"));
-//    }
-//
-//    public HeaderPage setLanguage(String language) {
-//        typeSelect(languageList, language);
-//        click(goBtn);
-//        return this;
-//    }
 
     @FindBy(id = "login_link")
     WebElement loginBtn;
@@ -65,9 +47,7 @@ public class HeaderPage extends PageBase {
         return isElementPresent(By.xpath("//a[contains(.,'Account')]"));
     }
 
-    // ToDo переделать isElementPresent?
-
-    @FindBy(xpath = "//a[contains(.,'Account')]")
+    @FindBy(css = " a .icon-user")
     WebElement accountBtn;
 
     public ProfilePage clickAccountBtn() throws InterruptedException {
@@ -76,8 +56,7 @@ public class HeaderPage extends PageBase {
         return new ProfilePage(driver);
     }
 
-
-    @FindBy(xpath = "//a[contains(.,'Oscar')]")
+    @FindBy(css = "div.col-sm-7.h1>a")
     WebElement logo;
 
     public HomePage clickOnLogo() {

@@ -13,7 +13,7 @@ public class PropertiesLoader {
     public static String loadProperty(String name) {
 
         Properties properties = new Properties();
-// загружаем объект Pr из файла
+        // загружаем объект Pr из файла
         try {
             properties.load(PropertiesLoader.class.getResourceAsStream(PROP_FILE));
         } catch (IOException e) {

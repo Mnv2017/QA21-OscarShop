@@ -53,7 +53,7 @@ public class BasketLoggedUserTest extends TestBase {
         Assert.assertEquals(basket.getOrderTotalPrice(), price);
     }
 
-    @Test(priority = 3)
+    @Test
     public void multipleOneBookInBasketTest() {
         int num = 2; // увеличиваем количество наименования до num
         String price = new BrowseStoreMenuPage(driver).clickOnBooksItem().clickOnBookNInList(1)
@@ -65,9 +65,9 @@ public class BasketLoggedUserTest extends TestBase {
         Assert.assertEquals(itemTotalPrice, Double.parseDouble(itemStringTotalPrice.substring(1)));
     }
 
-    @Test(priority = 4)
+    @Test
     public void emptyBasketTest() {
-        new BrowseStoreMenuPage(driver).clickOnBooksItem().clickOnBookNInList(1).addBookToBasket();
+        new BrowseStoreMenuPage(driver).clickOnBooksItem().addBookNToBasket(1);
         new NavigateMenuPage(driver).goToHomePage().clickOnClothingItem().clickOnFirstClothingInList()
                 .addClothingToBasket();
         BasketPage basket = new HeaderPage(driver).clickViewBasket().emptyBasket();

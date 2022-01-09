@@ -1,7 +1,6 @@
 package com.telran.oscar.pages.user;
 
 import com.telran.oscar.pages.PageBase;
-import com.telran.oscar.tests.TestBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

@@ -1,12 +1,10 @@
 package com.telran.oscar.pages.home;
 
 import com.telran.oscar.pages.PageBase;
-import com.telran.oscar.pages.product.ProductBookPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 public class HomePage extends PageBase {
     public HomePage(WebDriver driver) {

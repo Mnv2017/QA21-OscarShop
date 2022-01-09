@@ -6,6 +6,7 @@ import com.telran.oscar.pages.home.HomePage;
 import com.telran.oscar.pages.user.ProfilePage;
 import com.telran.oscar.tests.TestBase;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -27,7 +28,12 @@ public class UserSmokeTest extends TestBase {
                 .setEmail(User.REG_EMAIL).setPassword(User.REG_PASSWORD));
         Assert.assertEquals(new HomePage(driver).getAlertText(), "Welcome back");
         Assert.assertEquals(new HeaderPage(driver).clickAccountBtn().getAccountEmail(), User.REG_EMAIL);
-        new ProfilePage(driver).clickDeleteProfileBtn().deleteProfile(User.REG_PASSWORD);
     }
-
+    @AfterMethod
+    public void deleteAccount() throws InterruptedException {
+        if (new HeaderPage(driver).isAccountBtnPresent()) {
+            new HeaderPage(driver).clickAccountBtn();
+            new ProfilePage(driver).clickDeleteProfileBtn().deleteProfile(User.REG_PASSWORD);
+        }
+    }
 }

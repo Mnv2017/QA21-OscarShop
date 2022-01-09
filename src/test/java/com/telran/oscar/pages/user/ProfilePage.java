@@ -61,6 +61,4 @@ public class ProfilePage extends PageBase {
         return alertInner.getText();
     }
 
-    // локатор сообщения при неправильном пароле
-    // //div[@class='alert alert-danger']
 }

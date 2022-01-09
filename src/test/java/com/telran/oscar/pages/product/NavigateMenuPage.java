@@ -78,7 +78,7 @@ public class NavigateMenuPage extends PageBase {
     @FindBy(xpath = "//ul[@class='nav nav-list']//a[contains(.,'Hacking')]")
     WebElement hacking;
 
-    public NonFictionPage goToHackingPage(){
+    public NonFictionPage goToHackingPage() {
         click(hacking);
         return new NonFictionPage(driver);
     }

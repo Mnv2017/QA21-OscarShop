@@ -31,9 +31,6 @@ public class ChangePasswordPage extends PageBase {
         return new ProfilePage(driver);
     }
 
-    @FindBy(css = ".alert.alert-danger")
-    WebElement wrongDataAlert;
-
     public boolean isErrorAlertPresent() {
         return isElementPresent(By.cssSelector(".alert.alert-danger"));
     }
