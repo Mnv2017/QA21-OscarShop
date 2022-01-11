@@ -16,7 +16,7 @@ public class LoginPage extends PageBase {
         return isElementPresent(By.id("login_form"));
     }
 
-    @FindBy(id = "id_login-username")
+    @FindBy(css = "#id_login-username")
     WebElement loginEmail;
 
     @FindBy(id = "id_login-password")

@@ -47,7 +47,7 @@ public class HeaderPage extends PageBase {
         return isElementPresent(By.xpath("//a[contains(.,'Account')]"));
     }
 
-    @FindBy(css = " a .icon-user")
+    @FindBy(css = "a .icon-user")
     WebElement accountBtn;
 
     public ProfilePage clickAccountBtn() throws InterruptedException {
