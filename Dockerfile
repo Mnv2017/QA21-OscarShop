@@ -1,5 +1,5 @@
 FROM gradle:7.3.3-jdk11
 RUN mkdir /srv/gradle
 WORKDIR /srv/gradle
-RUN cp -r * .gradle .idea .
+COPY * .gradle .idea ./
 CMD ["gradle", "clean", "testSmoke1"]
