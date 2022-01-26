@@ -1,9 +1,8 @@
 package com.telran.oscar.pages.user;
 
 import com.telran.oscar.data.User;
-import com.telran.oscar.pages.home.HeaderPage;
-import com.telran.oscar.pages.home.HomePage;
 import com.telran.oscar.pages.PageBase;
+import com.telran.oscar.pages.home.HeaderPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

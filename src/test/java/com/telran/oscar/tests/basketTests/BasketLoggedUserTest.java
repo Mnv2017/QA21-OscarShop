@@ -55,7 +55,7 @@ public class BasketLoggedUserTest extends TestBase {
 
     @Test
     public void multipleOneBookInBasketTest() {
-        int num = 2; // увеличиваем количество наименования до num
+        int num = 2;
         String price = new BrowseStoreMenuPage(driver).clickOnBooksItem().clickOnBookNInList(1)
                 .addBookToBasket().getBookPrice();
         double itemTotalPrice = Double.parseDouble(price.substring(1)) * num;

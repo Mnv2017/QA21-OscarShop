@@ -1,10 +1,7 @@
 package com.telran.oscar.tests;
 
 import com.telran.oscar.helpers.MyListener;
-import com.telran.oscar.helpers.PropertiesLoader;
-import com.telran.oscar.pages.home.HeaderPage;
 import org.openqa.selenium.Cookie;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.BrowserType;
@@ -13,11 +10,12 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
-
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import java.lang.reflect.Method;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
@@ -25,17 +23,8 @@ public class TestBase {
     Logger logger = LoggerFactory.getLogger(TestBase.class);
     String browser = System.getProperty("browser", BrowserType.CHROME);
 
-    public static String baseURL = PropertiesLoader.loadProperty("url");
-    public static String validEmail = PropertiesLoader.loadProperty("valid.email");
-    public static String validPassword = PropertiesLoader.loadProperty("valid.password");
-
     @BeforeSuite
     public void setUp() {
-        // скрываем экран при выполнении тестов
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("headless");
-//        options.addArguments("windows-size=1200x800"); // задаем размер невидимого экрана
-//        driver = new ChromeDriver(options);
 
         if (browser.equals(BrowserType.CHROME)){
             driver = new EventFiringWebDriver(new ChromeDriver());
@@ -46,8 +35,6 @@ public class TestBase {
         }
 
         driver.manage().window().maximize();
-//        driver.manage().window().setSize(new Dimension(1800,900));
-//        driver.get(baseURL); // если используем файл с Properties
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://selenium1py.pythonanywhere.com/en-gb");
 

@@ -4,13 +4,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 public class PageBase {
-    // добавить неявные ожидание и screenshot
-//    protected WebDriver driver;
     protected WebDriver driver;
 
     public PageBase(WebDriver driver) {
@@ -30,16 +27,9 @@ public class PageBase {
         }
     }
 
-    public void typeSelect(WebElement element, String text){
+    public void typeSelect(WebElement element, String text) {
         Select select = new Select(element);
         select.selectByVisibleText(text);
-    }
-
-    public void clickWithAction(WebElement element) {
-        Actions action = new Actions(driver);
-        action.moveToElement(element).build().perform();
-        element.click();
-
     }
 
     public void clickWithJSExecutor(WebElement element, int x, int y) {
@@ -48,25 +38,8 @@ public class PageBase {
         element.click();
     }
 
-    public void typeWithJSExecutor(WebElement element, int x, int y, String text) {
-        if (text != null) {
-            clickWithJSExecutor(element, x, y);
-            element.clear();
-            element.sendKeys(text);
-        }
-    }
-
-    public void pause(int millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public boolean isElementPresent(By locator) {
-         return driver.findElements(locator).size() > 0;
+        return driver.findElements(locator).size() > 0;
     }
-
 
 }

@@ -35,7 +35,6 @@ public class ProductClothingPage extends PageBase {
 
     public boolean isProdInformationPresent() {
         return isElementPresent(By.xpath("//h2[contains(.,'Product Information')]"));
-
     }
 
     public boolean isCustomerReviewsPresent() {

@@ -103,7 +103,7 @@ public class RegistrationTests extends TestBase {
         Assert.assertTrue(passed);
     }
 
-    @AfterMethod // для registrationNewUserWrongEmailNegativeTest
+    @AfterMethod
     public void deleteAccount() throws InterruptedException {
         if (new HeaderPage(driver).isAccountBtnPresent()) {
             new HeaderPage(driver).clickAccountBtn();
