@@ -113,7 +113,7 @@ to run the **regression suite**.
  ```
 * Create a directory `test_logs` at the root of the project. You can build project and run tasks in IDE.
  <details>
- <summary>Files with test results will be created in the directory <strong><ins>test_logs</ins>></strong>: </summary>
+ <summary>Files with test results will be created in the directory <strong><ins>test_logs</ins></strong>: </summary>
  <br/>
 
 ![Log-files](https://github.com/Mnv2017/QA21-OscarShop/blob/main/images/IDEA-Log.png)
