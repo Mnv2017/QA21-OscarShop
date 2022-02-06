@@ -52,7 +52,7 @@ java -jar jenkins.war
 * In Jenkins user interface create `New Item` with type `Freestyle project`.
 
 <details>
- <summary> Make the settings in section <strong><ins>Configure</ins>></strong> as shown in the screenshots:</summary>
+ <summary> Make the settings in section <strong><ins>Configure</ins></strong> as shown in the screenshots:</summary>
   <br/>
 
 ![Source Code Management](https://github.com/Mnv2017/QA21-OscarShop/blob/main/images/Jenkins1.png)
@@ -113,7 +113,7 @@ to run the **regression suite**.
  ```
 * Create a directory `test_logs` at the root of the project. You can build project and run tasks in IDE.
  <details>
- <summary>Files with test results will be created in the directory <strong>test_logs</strong>: </summary>
+ <summary>Files with test results will be created in the directory <strong><ins>test_logs</ins>></strong>: </summary>
  <br/>
 
 ![Log-files](https://github.com/Mnv2017/QA21-OscarShop/blob/main/images/IDEA-Log.png)
