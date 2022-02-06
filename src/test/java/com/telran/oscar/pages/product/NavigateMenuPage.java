@@ -14,70 +14,70 @@ public class NavigateMenuPage extends PageBase {
     @FindBy(css = ".breadcrumb a")
     WebElement home;
 
+    @FindBy(xpath = "//ul[@class='nav nav-list']//a[contains(.,'Clothing')]")
+    WebElement clothing;
+
+    @FindBy(xpath = "//ul[@class='nav nav-list']//a[contains(.,'Books')]")
+    WebElement books;
+
+    @FindBy(xpath = "//ul[@class='breadcrumb']//a[text()='Offers']")
+    WebElement offers;
+
+    @FindBy(xpath = "//ul[@class='nav nav-list']//a[contains(.,'Fiction')]")
+    WebElement fiction;
+
+    @FindBy(xpath = "//ul[@class='nav nav-list']//a[contains(.,'Non-Fiction')]")
+    WebElement nonFiction;
+
+    @FindBy(xpath = "//ul[@class='nav nav-list']//a[contains(.,'Computers in Literature')]")
+    WebElement computer;
+
+    @FindBy(xpath = "//ul[@class='nav nav-list']//a[contains(.,'Essential programming')]")
+    WebElement essential;
+
+    @FindBy(xpath = "//ul[@class='nav nav-list']//a[contains(.,'Hacking')]")
+    WebElement hacking;
+
     public BrowseStoreMenuPage goToHomePage() throws InterruptedException {
         Thread.sleep(2000);
         click(home);
         return new BrowseStoreMenuPage(driver);
     }
 
-    @FindBy(xpath = "//ul[@class='nav nav-list']//a[contains(.,'Clothing')]")
-    WebElement clothing;
-
     public ClothingPage goToClothingPage() {
         click(clothing);
         return new ClothingPage(driver);
     }
-
-    @FindBy(xpath = "//ul[@class='nav nav-list']//a[contains(.,'Books')]")
-    WebElement books;
 
     public BooksPage goToBooksPage() {
         click(books);
         return new BooksPage(driver);
     }
 
-    @FindBy(xpath = "//ul[@class='breadcrumb']//a[text()='Offers']")
-    WebElement offers;
-
     public OffersPage goToOffersPage() {
         click(offers);
         return new OffersPage(driver);
     }
-
-    @FindBy(xpath = "//ul[@class='nav nav-list']//a[contains(.,'Fiction')]")
-    WebElement fiction;
 
     public FictionPage goToFictionPage() {
         click(fiction);
         return new FictionPage(driver);
     }
 
-    @FindBy(xpath = "//ul[@class='nav nav-list']//a[contains(.,'Non-Fiction')]")
-    WebElement nonFiction;
-
     public NonFictionPage goToNonFictionPage() {
         click(nonFiction);
         return new NonFictionPage(driver);
     }
-
-    @FindBy(xpath = "//ul[@class='nav nav-list']//a[contains(.,'Computers in Literature')]")
-    WebElement computer;
 
     public FictionPage goToComputerPage() {
         click(computer);
         return new FictionPage(driver);
     }
 
-    @FindBy(xpath = "//ul[@class='nav nav-list']//a[contains(.,'Essential programming')]")
-    WebElement essential;
-
     public NonFictionPage goToEssentialPage() {
         click(essential);
         return new NonFictionPage(driver);
     }
-
-    @FindBy(xpath = "//ul[@class='nav nav-list']//a[contains(.,'Hacking')]")
-    WebElement hacking;
 
     public NonFictionPage goToHackingPage() {
         click(hacking);

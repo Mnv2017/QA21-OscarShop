@@ -11,6 +11,12 @@ public class AllProductsPage extends PageBase {
         super(driver);
     }
 
+    @FindBy(xpath = "//div[@class='alertinner ']")
+    WebElement alert;
+
+    @FindBy(css = ".alertinner strong")
+    WebElement name;
+
     public boolean isAllProductsPagePresent() {
         return isElementPresent(By.xpath("//h1[contains(.,'All products')]"));
     }
@@ -21,15 +27,9 @@ public class AllProductsPage extends PageBase {
         return new ProductBookPage(driver);
     }
 
-    @FindBy(xpath = "//div[@class='alertinner ']")
-    WebElement alert;
-
     public String getAlertText() {
         return alert.getText();
     }
-
-    @FindBy(css = ".alertinner strong")
-    WebElement name;
 
     public String getProductNameFromAlert() {
         return name.getText();

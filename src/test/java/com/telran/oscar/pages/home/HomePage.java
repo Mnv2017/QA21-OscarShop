@@ -18,26 +18,26 @@ public class HomePage extends PageBase {
     @FindBy(css = ".well.well-blank h2")
     WebElement welcomeHeader;
 
+    @FindBy(css = ".well.promotion_single h2")
+    WebElement recReadingHeader;
+
+    @FindBy(css = ".sub-header h3")
+    WebElement otherGoodBooksHeader;
+
+    @FindBy(css = "#messages .alertinner.wicon")
+    WebElement alertInner;
+
     public String getSection1Header() {
         return welcomeHeader.getText();
     }
-
-    @FindBy(css = ".well.promotion_single h2")
-    WebElement recReadingHeader;
 
     public String getSection2Header() {
         return recReadingHeader.getText();
     }
 
-    @FindBy(css = ".sub-header h3")
-    WebElement otherGoodBooksHeader;
-
     public String getSection3Header() {
         return otherGoodBooksHeader.getText();
     }
-
-    @FindBy(css = "#messages .alertinner.wicon")
-    WebElement alertInner;
 
     public String getAlertText() throws InterruptedException {
         Thread.sleep(2000);

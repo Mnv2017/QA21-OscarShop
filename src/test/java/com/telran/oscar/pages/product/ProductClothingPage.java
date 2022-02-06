@@ -14,12 +14,18 @@ public class ProductClothingPage extends PageBase {
     @FindBy(css = "h1")
     WebElement name;
 
+    @FindBy(css = "div.row p.price_color")
+    WebElement price;
+
+    @FindBy(xpath = "//a[contains(.,'Django T-shirt')]")
+    WebElement firstVariant;
+
+    @FindBy(id = "add_to_basket_form")
+    WebElement addToBasketBtn;
+
     public String getClothingName() {
         return name.getText();
     }
-
-    @FindBy(css = "div.row p.price_color")
-    WebElement price;
 
     public String getClothingPrice() {
         return price.getText();
@@ -41,16 +47,10 @@ public class ProductClothingPage extends PageBase {
         return isElementPresent(By.xpath("//h2[contains(.,'Customer Reviews')]"));
     }
 
-    @FindBy(xpath = "//a[contains(.,'Django T-shirt')]")
-    WebElement firstVariant;
-
     public ProductClothingPage clickOnFirstVariant() {
         click(firstVariant);
         return this;
     }
-
-    @FindBy(id = "add_to_basket_form")
-    WebElement addToBasketBtn;
 
     public ProductClothingPage addClothingToBasket() {
         click(firstVariant);

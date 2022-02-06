@@ -14,21 +14,21 @@ public class AccountSidebarPage extends PageBase {
     @FindBy(xpath = "//a[text()='Profile']")
     WebElement profile;
 
+    @FindBy(xpath = "//a[text()='Order History']")
+    WebElement orderHistory;
+
+    @FindBy(xpath = "//a[text()='Address Book']")
+    WebElement addressBook;
+
     public ProfilePage getProfilePage() {
         click(profile);
         return new ProfilePage(driver);
     }
 
-    @FindBy(xpath = "//a[text()='Order History']")
-    WebElement orderHistory;
-
     public OrderHistoryPage clickOrderHistoryItem() {
         click(orderHistory);
         return new OrderHistoryPage(driver);
     }
-
-    @FindBy(xpath = "//a[text()='Address Book']")
-    WebElement addressBook;
 
     public AddressPage clickAddressBookItem(){
         click(addressBook);

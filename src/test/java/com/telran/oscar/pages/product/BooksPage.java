@@ -11,6 +11,18 @@ public class BooksPage extends PageBase {
         super(driver);
     }
 
+    @FindBy(xpath = "//div[@id='messages']//div[1]//div[@class='alertinner ']")
+    WebElement alert1;
+
+    @FindBy(xpath = "//div[@id='messages']//div[1]//div[@class='alertinner ']/strong")
+    WebElement name;
+
+    @FindBy(xpath = "//div[@id='messages']//div[@class='alertinner ']/p")
+    WebElement alert3;
+
+    @FindBy(xpath = "//div[@id='messages']//div[@class='alertinner ']/p/strong")
+    WebElement priceInAlert;
+
     public boolean isBooksPagePresent() {
         return isElementPresent(By.xpath("//h1[contains(.,'Books')]"));
     }
@@ -35,29 +47,17 @@ public class BooksPage extends PageBase {
         return this;
     }
 
-    @FindBy(xpath = "//div[@id='messages']//div[1]//div[@class='alertinner ']")
-    WebElement alert1;
-
     public String getAlert1Text() {
         return alert1.getText();
     }
-
-    @FindBy(xpath = "//div[@id='messages']//div[1]//div[@class='alertinner ']/strong")
-    WebElement name;
 
     public String getProductNameFromAlert() {
         return name.getText();
     }
 
-    @FindBy(xpath = "//div[@id='messages']//div[@class='alertinner ']/p")
-    WebElement alert3;
-
     public String getAlert3Text() {
         return alert3.getText();
     }
-
-    @FindBy(xpath = "//div[@id='messages']//div[@class='alertinner ']/p/strong")
-    WebElement priceInAlert;
 
     public String getProductPriceFromAlert() {
         return priceInAlert.getText();

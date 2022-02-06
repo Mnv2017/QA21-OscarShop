@@ -13,47 +13,47 @@ public class OrderHistoryPage extends PageBase {
     @FindBy(xpath = "//table//tr[2]//td[2]")
     WebElement numItems;
 
-    public String getNumItem(){
-        return numItems.getText();
-    }
-
     @FindBy(xpath = "//table//tr[2]//td[3]")
     WebElement lastOrderSum;
+
+    @FindBy(xpath = "//table//tr[2]//a")
+    WebElement orderNumber;
+
+    @FindBy(css = "p a")
+    WebElement firstProductName;
+
+    @FindBy(xpath = "//tr[1]/td[5]")
+    WebElement firstLinePrice;
+
+    @FindBy(xpath = "//tr[4]/td")
+    WebElement orderTotal;
+
+    public String getNumItem() {
+        return numItems.getText();
+    }
 
     public String getLastOrderSum() {
         return lastOrderSum.getText();
     }
 
-    @FindBy(xpath = "//table//tr[2]//a")
-    WebElement orderNumber;
-
-    public String getLastOrderNumber(){
+    public String getLastOrderNumber() {
         return orderNumber.getText();
     }
 
-    public OrderHistoryPage clickOrderNumber(){
+    public OrderHistoryPage clickOrderNumber() {
         click(orderNumber);
         return this;
     }
 
-    @FindBy(css = "p a")
-    WebElement firstProductName;
-
-    public String getFirstProductName(){
+    public String getFirstProductName() {
         return firstProductName.getText();
     }
 
-    @FindBy(xpath = "//tr[1]/td[5]")
-    WebElement firstLinePrice;
-
-    public String getFirstLinePrice(){
+    public String getFirstLinePrice() {
         return firstLinePrice.getText();
     }
 
-    @FindBy(xpath = "//tr[4]/td")
-    WebElement orderTotal;
-
-    public String getOrderTotal(){
+    public String getOrderTotal() {
         return orderTotal.getText();
     }
 

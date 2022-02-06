@@ -23,6 +23,9 @@ public class ChangePasswordPage extends PageBase {
     @FindBy(xpath = "//button[contains(text(),'Save')]")
     WebElement saveBtn;
 
+    @FindBy(css = "span.error-block")
+    WebElement errMessage;
+
     public ProfilePage changePassword(String oldPass, String newPass, String confirm) {
         type(oldPassword, oldPass);
         type(newPassword1, newPass);
@@ -35,10 +38,7 @@ public class ChangePasswordPage extends PageBase {
         return isElementPresent(By.cssSelector(".alert.alert-danger"));
     }
 
-    @FindBy(css ="span.error-block" )
-    WebElement errMessage;
-
-    public String getErrMessageText(){
+    public String getErrMessageText() {
         return errMessage.getText();
     }
 }

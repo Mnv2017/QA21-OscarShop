@@ -15,19 +15,34 @@ public class ProductBookPage extends PageBase {
     @FindBy(css = "h1")
     WebElement name;
 
+    @FindBy(css = "p.price_color")
+    WebElement price;
+
+    @FindBy(id = "add_to_basket_form")
+    WebElement addToBasketBtn;
+
+    @FindBy(css = ".product_pod h3 a")
+    WebElement firstViewedBook;
+
+    @FindBy(xpath = "//div[@id='messages']//div[1]//div[@class='alertinner ']")
+    WebElement alert1;
+
+    @FindBy(xpath = "//div[@id='messages']//div[1]//div[@class='alertinner ']/strong")
+    WebElement nameInAlert;
+
+    @FindBy(xpath = "//div[@id='messages']//div[@class='alertinner ']/p")
+    WebElement alert3;
+
+    @FindBy(xpath = "//div[@id='messages']//div[@class='alertinner ']/p/strong")
+    WebElement priceInAlert;
+
     public String getBookName() {
         return name.getText();
     }
 
-    @FindBy(css = "p.price_color")
-    WebElement price;
-
     public String getBookPrice() {
         return price.getText();
     }
-
-    @FindBy(id = "add_to_basket_form")
-    WebElement addToBasketBtn;
 
     public ProductBookPage addBookToBasket() {
         click(addToBasketBtn);
@@ -58,36 +73,22 @@ public class ProductBookPage extends PageBase {
     public boolean isProductsRecentlyViewsPresent() {
         return isElementPresent(By.xpath("//h2[contains(.,'Products you recently viewed')]"));
     }
-    @FindBy(css = ".product_pod h3 a")
-    WebElement firstViewedBook;
 
-    public String getNameFirstViewedBook(){
+    public String getNameFirstViewedBook() {
         return firstViewedBook.getAttribute("title");
     }
-
-    @FindBy(xpath = "//div[@id='messages']//div[1]//div[@class='alertinner ']")
-    WebElement alert1;
 
     public String getAlert1Text() {
         return alert1.getText();
     }
 
-    @FindBy(xpath = "//div[@id='messages']//div[1]//div[@class='alertinner ']/strong")
-    WebElement nameInAlert;
-
     public String getProductNameFromAlert() {
         return nameInAlert.getText();
     }
 
-    @FindBy(xpath = "//div[@id='messages']//div[@class='alertinner ']/p")
-    WebElement alert3;
-
     public String getAlert3Text() {
         return alert3.getText();
     }
-
-    @FindBy(xpath = "//div[@id='messages']//div[@class='alertinner ']/p/strong")
-    WebElement priceInAlert;
 
     public String getProductPriceFromAlert() {
         return priceInAlert.getText();

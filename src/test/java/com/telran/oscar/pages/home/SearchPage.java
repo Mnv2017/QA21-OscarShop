@@ -11,7 +11,6 @@ public class SearchPage extends PageBase {
         super(driver);
     }
 
-
     public ProductBookPage clickOnSelectedBook(String name) {
         WebElement selectedBook = driver.findElement(By.cssSelector("a[title='" + name + "']"));
         click(selectedBook);

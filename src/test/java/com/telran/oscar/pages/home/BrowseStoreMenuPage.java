@@ -17,29 +17,29 @@ public class BrowseStoreMenuPage extends PageBase {
     @FindBy(xpath = "//a[contains(.,'All products')]")
     WebElement allProducts;
 
+    @FindBy(xpath = "//a[contains(.,'Clothing')]")
+    WebElement clothing;
+
+    @FindBy(xpath = "//a[contains(.,'Books')]")
+    WebElement books;
+
+    @FindBy(xpath = "//a[contains(.,'Offers')]")
+    WebElement offers;
+
     public AllProductsPage clickOnAllProductsItem() {
         click(allProducts);
         return new AllProductsPage(driver);
     }
-
-    @FindBy(xpath = "//a[contains(.,'Clothing')]")
-    WebElement clothing;
 
     public ClothingPage clickOnClothingItem() {
         click(clothing);
         return new ClothingPage(driver);
     }
 
-    @FindBy(xpath = "//a[contains(.,'Books')]")
-    WebElement books;
-
     public BooksPage clickOnBooksItem() {
         click(books);
         return new BooksPage(driver);
     }
-
-    @FindBy(xpath = "//a[contains(.,'Offers')]")
-    WebElement offers;
 
     public OffersPage clickOnOffersItem() {
         click(offers);

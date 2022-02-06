@@ -14,13 +14,13 @@ public class ConfirmationPage extends PageBase {
     @FindBy(xpath = "//a[contains(.,'Continue shopping')]")
     WebElement continueShopping;
 
+    @FindBy(css = "h1")
+    WebElement orderNum;
+
     public HeaderPage clickContinueShopping() {
         click(continueShopping);
         return new HeaderPage(driver);
     }
-
-    @FindBy(css = "h1")
-    WebElement orderNum;
 
     public String getOrderNum() {
         String[] substr = orderNum.getText().split(":");

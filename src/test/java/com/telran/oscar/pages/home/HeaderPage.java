@@ -19,6 +19,27 @@ public class HeaderPage extends PageBase {
     @FindBy(id = "login_link")
     WebElement loginBtn;
 
+    @FindBy(id = "logout_link")
+    WebElement logoutBtn;
+
+    @FindBy(css = "a .icon-user")
+    WebElement accountBtn;
+
+    @FindBy(css = "div.col-sm-7.h1>a")
+    WebElement logo;
+
+    @FindBy(css = "span.btn-group a.btn.btn-default")
+    WebElement viewBasket;
+
+    @FindBy(css = ".basket-mini.pull-right.hidden-xs")
+    WebElement basketSum;
+
+    @FindBy(id = "id_q")
+    WebElement search;
+
+    @FindBy(css = "input[value=Search]")
+    WebElement searchBtn;
+
     public LoginPage clickLoginBtn() {
         click(loginBtn);
         return new LoginPage(driver);
@@ -28,9 +49,6 @@ public class HeaderPage extends PageBase {
         click(loginBtn);
         return new RegisterPage(driver);
     }
-
-    @FindBy(id = "logout_link")
-    WebElement logoutBtn;
 
     public boolean isLogOutBtnPresent() {
         return isElementPresent(By.id("logout_link"));
@@ -47,43 +65,25 @@ public class HeaderPage extends PageBase {
         return isElementPresent(By.xpath("//a[contains(.,'Account')]"));
     }
 
-    @FindBy(css = "a .icon-user")
-    WebElement accountBtn;
-
     public ProfilePage clickAccountBtn() throws InterruptedException {
         Thread.sleep(2000);
         click(accountBtn);
         return new ProfilePage(driver);
     }
 
-    @FindBy(css = "div.col-sm-7.h1>a")
-    WebElement logo;
-
     public HomePage clickOnLogo() {
         click(logo);
         return new HomePage(driver);
     }
-
-    @FindBy(css = "span.btn-group a.btn.btn-default")
-    WebElement viewBasket;
 
     public BasketPage clickViewBasket() {
         click(viewBasket);
         return new BasketPage(driver);
     }
 
-    @FindBy(css = ".basket-mini.pull-right.hidden-xs")
-    WebElement basketSum;
-
     public String getBasketSum() {
         return basketSum.getText();
     }
-
-    @FindBy(id = "id_q")
-    WebElement search;
-
-    @FindBy(css = "input[value=Search]")
-    WebElement searchBtn;
 
     public SearchPage searchProductByName(String name) {
         type(search, name);

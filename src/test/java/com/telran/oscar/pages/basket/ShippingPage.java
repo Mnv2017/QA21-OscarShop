@@ -12,12 +12,15 @@ public class ShippingPage extends PageBase {
         super(driver);
     }
 
+    @FindBy(css = ".btn.btn-primary.btn-large.ship-address")
+    WebElement shipToAddress;
+
+    @FindBy(css = "button")
+    WebElement continueBtn;
+
     public boolean isShipToAddressBtnPresent() {
         return isElementPresent(By.cssSelector(".btn.btn-primary.btn-large.ship-address"));
     }
-
-    @FindBy(css = ".btn.btn-primary.btn-large.ship-address")
-    WebElement shipToAddress;
 
     public PaymentPage clickShipToThisAddress() {
         click(shipToAddress);
@@ -31,11 +34,7 @@ public class ShippingPage extends PageBase {
             new AddressPage(driver).fillShippingAddressForm();
             return new ShippingPage(driver).clickContinueBtn();
         }
-
     }
-
-    @FindBy(css = "button")
-    WebElement continueBtn;
 
     public PaymentPage clickContinueBtn() {
         click(continueBtn);

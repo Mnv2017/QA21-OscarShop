@@ -11,6 +11,12 @@ public class PageNavigatorPage extends PageBase {
         super(driver);
     }
 
+    @FindBy(css = ".next a") // a
+    WebElement nextBtn;
+
+    @FindBy(css = ".previous a")
+    WebElement previousBtn;
+
     public boolean isPreviousBtnPresent() {
         return isElementPresent(By.cssSelector(".previous"));
     }
@@ -37,16 +43,10 @@ public class PageNavigatorPage extends PageBase {
         return Integer.parseInt(driver.findElement(By.cssSelector(".form-horizontal strong")).getText());
     }
 
-    @FindBy(css = ".next a") // a
-    WebElement nextBtn;
-
     public PageNavigatorPage clickOnNextBtn() {
         click(nextBtn);
         return this;
     }
-
-    @FindBy(css = ".previous a")
-    WebElement previousBtn;
 
     public PageNavigatorPage clickOnPreviousBtn() {
         click(previousBtn);

@@ -18,6 +18,9 @@ public class ClothingPage extends PageBase {
     @FindBy(xpath = "//ol[@class='row']//li[1]//h3/a")
     WebElement firstClothing;
 
+    @FindBy(xpath = "//ol[@class='row']//li[1]//p[@class='price_color']")
+    WebElement firstClothingPrice;
+
     public ProductClothingPage clickOnFirstClothingInList() {
         click(firstClothing);
         return new ProductClothingPage(driver);
@@ -26,9 +29,6 @@ public class ClothingPage extends PageBase {
     public String getFirstClothingInListName() {
         return firstClothing.getAttribute("title");
     }
-
-    @FindBy(xpath = "//ol[@class='row']//li[1]//p[@class='price_color']")
-    WebElement firstClothingPrice;
 
     public String getFirstClothingInListPrice() {
         return firstClothingPrice.getText();

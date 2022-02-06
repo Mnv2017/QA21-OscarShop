@@ -16,10 +16,6 @@ public class RegisterPage extends PageBase {
     @FindBy(id = "register_form")
     WebElement registerForm;
 
-    public boolean isRegisterFormPresent() {
-        return registerForm.isDisplayed();
-    }
-
     @FindBy(id = "id_registration-email")
     WebElement registerEmail;
 
@@ -31,6 +27,13 @@ public class RegisterPage extends PageBase {
 
     @FindBy(css = "button[name=registration_submit]")
     WebElement registerBtn;
+
+    @FindBy(css = "span.error-block")
+    WebElement errMessage;
+
+    public boolean isRegisterFormPresent() {
+        return registerForm.isDisplayed();
+    }
 
     public HeaderPage createNewAccountUser(User user) {
         type(registerEmail, user.getEmail());
@@ -44,9 +47,6 @@ public class RegisterPage extends PageBase {
         return isElementPresent(By.cssSelector(".alert.alert-danger"));
     }
 
-    @FindBy(css = "span.error-block")
-    WebElement errMessage;
-
     public String getErrMessageText() {
         return errMessage.getText();
     }
@@ -54,6 +54,7 @@ public class RegisterPage extends PageBase {
     public boolean isPasswordTooShortMessagePresent() {
         return isElementPresent(By.xpath("//span[contains(.,'This password is too short')]"));
     }
+
     public boolean isPasswordTooCommonMessagePresent() {
         return isElementPresent(By.xpath("//span[contains(.,'This password is too common')]"));
     }

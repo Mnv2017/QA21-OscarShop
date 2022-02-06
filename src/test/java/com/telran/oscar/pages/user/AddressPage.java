@@ -15,11 +15,6 @@ public class AddressPage extends PageBase {
     @FindBy(css = "a.btn.btn-primary")
     WebElement addNewAdressBtn;
 
-    public AddressPage clickAddNewAddressBtn() {
-        click(addNewAdressBtn);
-        return this;
-    }
-
     @FindBy(id = "id_title")
     WebElement titleSelect;
 
@@ -59,6 +54,20 @@ public class AddressPage extends PageBase {
     @FindBy(css = "button.btn.btn-lg.btn-primary")
     WebElement saveBtn;
 
+    @FindBy(css = "address")
+    WebElement address;
+
+    @FindBy(xpath = "//a[contains(.,'Edit')]")
+    WebElement editBtn;
+
+    @FindBy(css = "div.alertinner.wicon")
+    WebElement updateAlert;
+
+    public AddressPage clickAddNewAddressBtn() {
+        click(addNewAdressBtn);
+        return this;
+    }
+
     public AddressPage fillShippingAddressForm() {
         typeSelect(titleSelect, Address.TITLE);
         type(fName, Address.F_NAME);
@@ -80,28 +89,19 @@ public class AddressPage extends PageBase {
         return this;
     }
 
-    @FindBy(css = "address")
-    WebElement address;
-
-    public String getAddress(){
+    public String getAddress() {
         return address.getText();
     }
 
-    @FindBy(xpath = "//a[contains(.,'Edit')]")
-    WebElement editBtn;
-
-    public AddressPage clickEditBtn(){
+    public AddressPage clickEditBtn() {
         click(editBtn);
         return this;
     }
 
-    public AddressPage editFirstLineAddress(String edit){
+    public AddressPage editFirstLineAddress(String edit) {
         type(line1, edit);
         return this;
     }
-
-    @FindBy(css = "div.alertinner.wicon")
-    WebElement updateAlert;
 
     public String getUpdateAlert() {
         return updateAlert.getText();

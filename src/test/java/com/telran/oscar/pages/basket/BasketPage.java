@@ -12,6 +12,24 @@ public class BasketPage extends PageBase {
         super(driver);
     }
 
+    @FindBy(id = "id_form-0-quantity")
+    WebElement numBooks;
+
+    @FindBy(css = ".input-group-btn button")
+    WebElement submitBtn;
+
+    @FindBy(css = "#content_inner p")
+    WebElement emptyMsg;
+
+    @FindBy(css = ".alertinner p")
+    WebElement emptyAlert;
+
+    @FindBy(css = "h3.price_color")
+    WebElement orderTotal;
+
+    @FindBy(xpath = "//a[contains(text(),'Proceed to checkout')]")
+    WebElement toCheckout;
+
     public boolean isBasketPagePresent() {
         return isElementPresent(By.xpath("//h1[contains(.,'Basket')]"));
     }
@@ -31,12 +49,6 @@ public class BasketPage extends PageBase {
                 + i + "]//div[@class='col-sm-2']/p")).getText();
     }
 
-    @FindBy(id = "id_form-0-quantity")
-    WebElement numBooks;
-
-    @FindBy(css = ".input-group-btn button")
-    WebElement submitBtn;
-
     public void deleteItemFromBasket() {
         type(numBooks, "0");
         click(submitBtn);
@@ -49,15 +61,9 @@ public class BasketPage extends PageBase {
         return this;
     }
 
-    @FindBy(css = "#content_inner p")
-    WebElement emptyMsg;
-
     public String getMessageText() {
         return emptyMsg.getText();
     }
-
-    @FindBy(css = ".alertinner p")
-    WebElement emptyAlert;
 
     public String getAlertText() {
         return emptyAlert.getText();
@@ -75,15 +81,9 @@ public class BasketPage extends PageBase {
         return "£" + Precision.round(sum, 2);
     }
 
-    @FindBy(css = "h3.price_color")
-    WebElement orderTotal;
-
     public String getOrderTotalPrice() {
         return orderTotal.getText();
     }
-
-    @FindBy(xpath = "//a[contains(text(),'Proceed to checkout')]")
-    WebElement toCheckout;
 
     public ShippingPage clickProceedToCheckout() {
         click(toCheckout);
@@ -91,7 +91,7 @@ public class BasketPage extends PageBase {
     }
 
     public BasketPage multipleItemInBasket(int i, int num) {
-        // i - номер строки корзины, num - количество продукта
+        // i - number of position, num - number of product
         WebElement itemI = driver.findElement(By.cssSelector("#id_form-" + (i - 1) + "-quantity"));
         type(itemI, "" + num);
         WebElement itemISubmit = driver.findElement(By.xpath("//*[@id='basket_formset']/div[" + i + "]//button"));
