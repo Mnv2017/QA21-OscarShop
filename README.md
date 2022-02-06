@@ -52,7 +52,7 @@ java -jar jenkins.war
 * In Jenkins user interface create `New Item` with type `Freestyle project`.
 
 <details>
- <summary> Make the settings in section <strong>Configure</strong> as shown in the screenshots:</summary>
+ <summary> Make the settings in section <strong><ins>Configure</ins>></strong> as shown in the screenshots:</summary>
   <br/>
 
 ![Source Code Management](https://github.com/Mnv2017/QA21-OscarShop/blob/main/images/Jenkins1.png)
@@ -67,7 +67,7 @@ java -jar jenkins.war
 
 ### Running with Jenkins
 <details>
- <summary> After starting the job in Jenkins with <strong>Build now</strong> the tests will start to run. </summary>
+ <summary> After starting the job in Jenkins with <strong><ins>Build now</ins></strong> the tests will start to run. </summary>
  <br/>
 
 ![Source Code Management](https://github.com/Mnv2017/QA21-OscarShop/blob/main/images/Jenkins%20Results%2013.png)
@@ -75,7 +75,7 @@ java -jar jenkins.war
  </details>
 
 <details>
- <summary> The results of the tests will be displayed in section <strong>Test Result</strong>. </summary>
+ <summary> The results of the tests will be displayed in section <strong><ins>Test Result</ins></strong>. </summary>
  <br/>
 
 ![Source Code Management](https://github.com/Mnv2017/QA21-OscarShop/blob/main/images/JResults2-2.png)
