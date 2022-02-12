@@ -4,10 +4,10 @@ This project is intended to test web site [OscarWebStore][OscarWebStore].
 
 ## Description
 
-The project includes GUI tests to check the currently developed functionality of the site. The test suite is conventionally divided into **user, homepage, product** and **basket** modules.
-
 The project is written in [Java][Java] using [Selenium Webdriver][Selenium] and [TestNG][TestNG] testing framework.
 [Gradle][Gradle] was used to build the project, as IDE was used [IntelliJ IDEA][IDE].
+
+The project includes GUI tests to check the currently developed functionality of the site. The test suite is conventionally divided into **user, homepage, product** and **basket** modules.
 
 Two test suites are formed:
 - ***smoke-test*** with a script for logging in to the site and making book purchases.
