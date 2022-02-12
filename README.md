@@ -1,6 +1,6 @@
 # Selenium project OscarWebStore
 
-This project is intended to test web site [OscarWebStore][OscarWebStore].
+This project is intended to test website [OscarWebStore][OscarWebStore].
 
 ## Description
 
@@ -17,7 +17,7 @@ Test launching is automated with [Jenkins][Jenkins].
 
 ## Environment
 
-The web site was tested in **MacOS Big Sur v11.6.2** in the **Chrome v97** at a screen resolution of **2880 × 1800**.
+The website was tested in **MacOS Big Sur v11.6.2** in the **Chrome v97** at a screen resolution of **2880 × 1800**.
 
 ## Installation
 
